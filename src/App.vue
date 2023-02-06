@@ -19,11 +19,17 @@ import {
   IonTabButton,
   IonTabs,
   IonContent,
+  IonHeader,
+  IonToolbar,
+  IonButton,
+  IonFooter,
 } from "@ionic/vue";
+import { bottomNavbarEventBus } from "@/composables/bottom-navbar-event-bus";
+import ComponentBottomNavbar from "./components/ComponentBottomNavbar.vue";
 
 const conn = ref({});
-
 const mssg = ref({});
+const view = ref("");
 
 function mqttConnect() {
   connect();
@@ -45,17 +51,19 @@ function mqttPublish3() {
   publish("brrr3", "this is 3", 0, false);
 }
 
-mqttConnectionEventListener.on((e) => {
-  conn.value = e.connected;
+mqttConnectionEventListener.on((x) => {
+  conn.value = x.connected;
 
-  // tambah if... subscribe hanya pas connect...
-  subscribe("brrr1", 1);
-  subscribe("brrr2", 1);
-  subscribe("brrr3", 1);
+  if (conn.value == true) {
+    // tambah if... subscribe hanya pas connect...
+    subscribe("brrr1", 1);
+    subscribe("brrr2", 1);
+    subscribe("brrr3", 1);
+  }
 });
 
-mqttMessageArrivedEventListener.on((e) => {
-  mssg.value = e.message;
+mqttMessageArrivedEventListener.on((x) => {
+  mssg.value = x.message;
 });
 
 function filterMessages() {
@@ -64,27 +72,32 @@ function filterMessages() {
   // }
 }
 
-const beforeTabChange = () => {
-  // do something before tab change
-};
-
-const afterTabChange = () => {
-  // do something after tab change
-};
+bottomNavbarEventBus.on((x) => {
+  view.value = x;
+});
 </script>
 
 <template>
   <IonApp>
     <IonPage>
+      <!-- <IonHeader>
+        <IonToolbar>
+          <IonLabel>test</IonLabel>
+        </IonToolbar>
+      </IonHeader> -->
       <IonContent>
         <div>my pussy so wet rn - {{ conn }}</div>
         <div>Messages: {{ mssg }}</div>
-        <button @click="mqttConnect()">Connect</button>
-        <button @click="mqttDisconnect()">Disconnect</button>
-        <button @click="mqttPublish1()">Send Msg 1</button>
-        <button @click="mqttPublish2()">Send Msg 2</button>
-        <button @click="mqttPublish3()">Send Msg 3</button>
       </IonContent>
+      <IonContent>
+        <IonButton @click="mqttConnect()">Connect</IonButton>
+        <IonButton @click="mqttDisconnect()">Disconnect</IonButton>
+        <IonButton @click="mqttPublish1()">Send Msg 1</IonButton>
+        <IonButton @click="mqttPublish2()">Send Msg 2</IonButton>
+        <IonButton @click="mqttPublish3()">Send Msg 3</IonButton>
+        {{ view }}
+      </IonContent>
+      <ComponentBottomNavbar />
     </IonPage>
   </IonApp>
 </template>
