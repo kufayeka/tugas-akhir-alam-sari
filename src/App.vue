@@ -10,26 +10,19 @@ import {
   mqttConnectionEventListener,
   mqttMessageArrivedEventListener,
 } from "./composables/capacitorjs-mqtt-bridge-event-bus";
-import {
-  IonApp,
-  IonLabel,
-  IonPage,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  IonContent,
-  IonHeader,
-  IonToolbar,
-  IonButton,
-  IonFooter,
-} from "@ionic/vue";
 import { bottomNavbarEventBus } from "@/composables/bottom-navbar-event-bus";
+import { kApp, kPage, kNavbar, kBlock, kButton, kCard } from "konsta/vue";
 import ComponentBottomNavbar from "./components/ComponentBottomNavbar.vue";
 
 const conn = ref({});
 const mssg = ref({});
 const view = ref("");
+const topicA = "brrr1";
+const topicB = "brrr2";
+const topicC = "brrr3";
+const topicAMsg = ref("");
+const topicBMsg = ref("");
+const topicCMsg = ref("");
 
 function mqttConnect() {
   connect();
@@ -40,15 +33,15 @@ function mqttDisconnect() {
 }
 
 function mqttPublish1() {
-  publish("brrr1", "this is 1", 0, false);
+  publish("brrr1", "this is 1", 2, false);
 }
 
 function mqttPublish2() {
-  publish("brrr2", "this is 2", 0, false);
+  publish("brrr2", "this is 2", 2, false);
 }
 
 function mqttPublish3() {
-  publish("brrr3", "this is 3", 0, false);
+  publish("brrr3", "this is 3", 2, false);
 }
 
 mqttConnectionEventListener.on((x) => {
@@ -56,20 +49,31 @@ mqttConnectionEventListener.on((x) => {
 
   if (conn.value == true) {
     // tambah if... subscribe hanya pas connect...
-    subscribe("brrr1", 1);
-    subscribe("brrr2", 1);
-    subscribe("brrr3", 1);
+    subscribe("brrr1", 2);
+    subscribe("brrr2", 2);
+    subscribe("brrr3", 2);
   }
 });
 
+var y = ref(0);
+
 mqttMessageArrivedEventListener.on((x) => {
   mssg.value = x.message;
+  filterMessages(x.message);
 });
 
-function filterMessages() {
-  // switch(x) {
-  //   case
-  // }
+function filterMessages(x: any) {
+  switch (x.topic) {
+    case topicA:
+      topicAMsg.value = x.message;
+      break;
+    case topicB:
+      topicBMsg.value = x.message;
+      break;
+    case topicC:
+      topicCMsg.value = x.message;
+      break;
+  }
 }
 
 bottomNavbarEventBus.on((x) => {
@@ -78,28 +82,37 @@ bottomNavbarEventBus.on((x) => {
 </script>
 
 <template>
-  <IonApp>
-    <IonPage>
-      <!-- <IonHeader>
-        <IonToolbar>
-          <IonLabel>test</IonLabel>
-        </IonToolbar>
-      </IonHeader> -->
-      <IonContent>
+  <kApp theme="material" :touch-ripple="true">
+    <kPage>
+      <kNavbar title="My App" />
+      <kBlock class="space-y-2">
+        <p>Here comes my app</p>
         <div>my pussy so wet rn - {{ conn }}</div>
         <div>Messages: {{ mssg }}</div>
-      </IonContent>
-      <IonContent>
-        <IonButton @click="mqttConnect()">Connect</IonButton>
-        <IonButton @click="mqttDisconnect()">Disconnect</IonButton>
-        <IonButton @click="mqttPublish1()">Send Msg 1</IonButton>
-        <IonButton @click="mqttPublish2()">Send Msg 2</IonButton>
-        <IonButton @click="mqttPublish3()">Send Msg 3</IonButton>
+        <kButton raised rounded clear class="border" @click="mqttConnect()"
+          >Connect</kButton
+        >
+        <kButton raised rounded clear class="border" @click="mqttDisconnect()"
+          >Disconnect</kButton
+        >
+        <kButton raised rounded clear class="border" @click="mqttPublish1()"
+          >Send Msg 1</kButton
+        >
+        <kButton raised rounded clear class="border" @click="mqttPublish2()"
+          >Send Msg 2</kButton
+        >
+        <kButton raised rounded clear class="border" @click="mqttPublish3()"
+          >Send Msg 3</kButton
+        >
         {{ view }}
-      </IonContent>
+        <kCard raised> Im a bad bitch... im a cunt. </kCard>
+        <div>topic A: {{ topicAMsg }}</div>
+        <div>topic B: {{ topicBMsg }}</div>
+        <div>topic C: {{ topicCMsg }}</div>
+      </kBlock>
       <ComponentBottomNavbar />
-    </IonPage>
-  </IonApp>
+    </kPage>
+  </kApp>
 </template>
 
 <style scoped></style>

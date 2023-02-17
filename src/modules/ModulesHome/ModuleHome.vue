@@ -1,17 +1,5 @@
-<script setup lang="ts">
-import {
-  IonContent,
-  IonHeader,
-  IonLabel,
-  IonPage,
-  IonRouterOutlet,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <IonPage>
-    <IonContent> ini home </IonContent>
-  </IonPage>
+  <div>ini home</div>
 </template>

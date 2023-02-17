@@ -1,18 +1,42 @@
 <script setup>
+import {
+  kPage,
+  kNavbar,
+  kNavbarBackLink,
+  kTabbar,
+  kTabbarLink,
+  kBlock,
+  kIcon,
+  kList,
+  kListItem,
+  kToggle,
+} from "konsta/vue";
 import { bottomNavbarEventBus } from "@/composables/bottom-navbar-event-bus";
-import { IonButton, IonFooter } from "@ionic/vue";
+import { ref } from "vue";
+const tabHome = "tabHome";
+const tabKontrol = "tabKontrol";
+
+let activeTab = ref("");
+
+activeTab.value = tabHome;
 
 function goToHome() {
-  bottomNavbarEventBus.emit("viewHome");
+  activeTab.value = tabHome;
+  bottomNavbarEventBus.emit(tabHome);
 }
 
 function goToKontrol() {
-  bottomNavbarEventBus.emit("viewKontrol");
+  activeTab.value = tabKontrol;
+  bottomNavbarEventBus.emit(tabKontrol);
 }
 </script>
 <template>
-  <IonFooter>
-    <IonButton @click="goToHome()">Home</IonButton>
-    <IonButton @click="goToKontrol()">Kontrol</IonButton>
-  </IonFooter>
+  <k-tabbar class="bottom-0 left-0 fixed">
+    <k-tabbar-link :active="activeTab === tabHome" @click="goToHome()">
+      Home
+    </k-tabbar-link>
+    <k-tabbar-link :active="activeTab === tabKontrol" @click="goToKontrol()">
+      Kontrol
+    </k-tabbar-link>
+  </k-tabbar>
 </template>
