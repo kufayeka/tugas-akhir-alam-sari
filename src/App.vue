@@ -1,28 +1,52 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref, onBeforeMount, onUpdated } from "vue";
+import { useRoute } from "vue-router";
 import {
   connect,
   disconnect,
   publish,
   subscribe,
-} from "./plugins/capacitorjs-mqtt-bridge";
+} from "./service/capacitorjs-mqtt-bridge";
 import {
   mqttConnectionEventListener,
   mqttMessageArrivedEventListener,
 } from "./composables/capacitorjs-mqtt-bridge-event-bus";
-import { bottomNavbarEventBus } from "@/composables/bottom-navbar-event-bus";
-import { kApp, kPage, kNavbar, kBlock, kButton, kCard } from "konsta/vue";
-import ComponentBottomNavbar from "./components/ComponentBottomNavbar.vue";
+import { appNavigationEventBus } from "@/composables/app-navigation-event-bus";
+import { App, Page } from "konsta/vue";
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-creative";
+import "@/assets/swiper-style.css";
+
+import { SplashScreen } from "@capacitor/splash-screen";
+
+// import required modules
+import { EffectCreative, Pagination } from "swiper";
+
+import ComponentBottomNavbar from "@/components/ComponentBottomNavbar.vue";
+import ModuleMonitor from "@/modules/ModulesMonitor/ModuleMonitor.vue";
+import ModuleKontrol from "@/modules/ModulesKontrol/ModuleKontrol.vue";
+import ModuleInfo from "@/modules/ModulesInfo/ModuleInfo.vue";
+import {
+  viewComponentLoadingScreenDOM,
+  viewComponentLoadingScreenMethods,
+} from "@/views/ViewComponentLoadingScreen";
 
 const conn = ref({});
 const mssg = ref({});
-const view = ref("");
+const tabView = ref("");
 const topicA = "brrr1";
 const topicB = "brrr2";
 const topicC = "brrr3";
 const topicAMsg = ref("");
 const topicBMsg = ref("");
 const topicCMsg = ref("");
+
+const modules = [EffectCreative, Pagination];
 
 function mqttConnect() {
   connect();
@@ -33,15 +57,15 @@ function mqttDisconnect() {
 }
 
 function mqttPublish1() {
-  publish("brrr1", "this is 1", 2, false);
+  publish("brrr1", "this is 1", 2, true);
 }
 
 function mqttPublish2() {
-  publish("brrr2", "this is 2", 2, false);
+  publish("brrr2", "this is 2", 2, true);
 }
 
 function mqttPublish3() {
-  publish("brrr3", "this is 3", 2, false);
+  publish("brrr3", "this is 3", 2, true);
 }
 
 mqttConnectionEventListener.on((x) => {
@@ -54,8 +78,6 @@ mqttConnectionEventListener.on((x) => {
     subscribe("brrr3", 2);
   }
 });
-
-var y = ref(0);
 
 mqttMessageArrivedEventListener.on((x) => {
   mssg.value = x.message;
@@ -76,43 +98,31 @@ function filterMessages(x: any) {
   }
 }
 
-bottomNavbarEventBus.on((x) => {
-  view.value = x;
+appNavigationEventBus.on((x) => {
+  tabView.value = x;
 });
+
+window.addEventListener("load", async () => {
+  // Hide the splash screen once the webview component is fully loaded
+  console.log("Webview component loaded");
+});
+
+onMounted(async () => {
+  mqttConnect();
+  await SplashScreen.hide();
+});
+
+onUpdated(async () => {});
 </script>
 
 <template>
-  <kApp theme="material" :touch-ripple="true">
-    <kPage>
-      <kNavbar title="My App" />
-      <kBlock class="space-y-2">
-        <p>Here comes my app</p>
-        <div>my pussy so wet rn - {{ conn }}</div>
-        <div>Messages: {{ mssg }}</div>
-        <kButton raised rounded clear class="border" @click="mqttConnect()"
-          >Connect</kButton
-        >
-        <kButton raised rounded clear class="border" @click="mqttDisconnect()"
-          >Disconnect</kButton
-        >
-        <kButton raised rounded clear class="border" @click="mqttPublish1()"
-          >Send Msg 1</kButton
-        >
-        <kButton raised rounded clear class="border" @click="mqttPublish2()"
-          >Send Msg 2</kButton
-        >
-        <kButton raised rounded clear class="border" @click="mqttPublish3()"
-          >Send Msg 3</kButton
-        >
-        {{ view }}
-        <kCard raised> Im a bad bitch... im a cunt. </kCard>
-        <div>topic A: {{ topicAMsg }}</div>
-        <div>topic B: {{ topicBMsg }}</div>
-        <div>topic C: {{ topicCMsg }}</div>
-      </kBlock>
-      <ComponentBottomNavbar />
-    </kPage>
-  </kApp>
+  <App theme="material">
+    <viewComponentLoadingScreenDOM />
+    <ModuleMonitor v-show="tabView === 'tabMonitor'" />
+    <ModuleKontrol v-show="tabView === 'tabKontrol'" />
+    <ModuleInfo v-show="tabView === 'tabInfo'" />
+    <ComponentBottomNavbar />
+  </App>
 </template>
 
-<style scoped></style>
+<style></style>

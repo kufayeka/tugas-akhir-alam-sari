@@ -14,11 +14,11 @@ onMounted(() => {
   <div class="h-fit flex flex-col justify-between" ref="myDiv">
     <Card class="flex-1 pb-16 shadow-card2">
       <div class="max-w-screen-md mx-auto">
-        <h1 class="font-bold text-3xl text-md-light-primary">Kontrol</h1>
+        <h1 class="font-bold text-3xl text-md-light-primary">Info</h1>
         <Block
           class="bg-white shadow-card1 rounded-xl h-40 p-2 active:opacity-90 active:scale-98 transition duration-50 ease-in-out"
         >
-          <p>setting1</p>
+          <p>link github buat source code aplikasi + source code raspi</p>
         </Block>
       </div>
     </Card>

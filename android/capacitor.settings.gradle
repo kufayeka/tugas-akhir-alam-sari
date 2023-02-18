@@ -11,8 +11,17 @@ project(':capacitor-haptics').projectDir = new File('../node_modules/@capacitor/
 include ':capacitor-keyboard'
 project(':capacitor-keyboard').projectDir = new File('../node_modules/@capacitor/keyboard/android')
 
+include ':capacitor-splash-screen'
+project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capacitor/splash-screen/android')
+
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
 include ':capacitorjs-mqtt-bridge'
 project(':capacitorjs-mqtt-bridge').projectDir = new File('../../capacitorjs-mqtt-bridge/android')
+
+include ':capacitorjs-screen-plugin'
+project(':capacitorjs-screen-plugin').projectDir = new File('../../capacitorjs-screen-plugin/android')
+
+include ':capacitorjs-spinner'
+project(':capacitorjs-spinner').projectDir = new File('../../capacitorjs-spinner/android')

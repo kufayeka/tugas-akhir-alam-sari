@@ -1,0 +1,11 @@
+trailingComma: "es6";
+semi: false;
+singleQuote: false;
+printWidth: 200;
+tabWidth: 4;
+allowParents: true;
+bracketSpacing: true;
+bracketSameLine: false;
+vueIndentScriptAndStyle: true;
+htmlWhitespaceSensitivity: "css";
+singleAttributePerLine: true;

@@ -1,16 +1,16 @@
 import MainRouter from "@/router/index";
 
 // use arrow function to render component when needed (reduces web load);
-const Module = () => import("./ModuleHome.vue");
+const Module = () => import("./ModuleInfo.vue");
 
 const moduleRoute = {
-  path: "/",
+  path: "/info",
   component: Module,
-  name: "VIEW:HOME",
+  name: "VIEW:INFO",
 };
 
-async function moduleHomeRouter() {
+async function moduleInfoRouter() {
   MainRouter.addRoute(moduleRoute);
 }
 
-export default moduleHomeRouter;
+export default moduleInfoRouter;
