@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { Block, Button, Card, Page } from "konsta/vue";
 import { ref, onMounted } from "vue";
+
+import {
+  styleKolomDataKimat,
+  styleJudulDataKlimat,
+  styleValueDataKlimat,
+  styleTitleLgMedium,
+  styleTextRegular,
+} from "@/composables/tailwind-component-styles";
+
 const myDiv = ref();
 onMounted(() => {
   // set the main card height to fill the screen when the content inside can't
@@ -11,16 +20,43 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-fit flex flex-col justify-between" ref="myDiv">
-    <Card class="flex-1 pb-16 shadow-card2">
-      <div class="max-w-screen-md mx-auto">
-        <h1 class="font-bold text-3xl text-md-light-primary">Info</h1>
-        <Block
-          class="bg-white shadow-card1 rounded-xl h-40 p-2 active:opacity-90 active:scale-98 transition duration-50 ease-in-out"
-        >
-          <p>link github buat source code aplikasi + source code raspi</p>
-        </Block>
+  <div class="h-fit flex flex-col" ref="myDiv">
+    <div class="max-w-screen-md mx-8 mt-8">
+      <h1 class="font-bold text-3xl text-md-light-primary">Info</h1>
+      <div class="flex-1 pb-32">
+        <div class="flex justify-center items-center my-7">
+          <p :class="styleTitleLgMedium">Parameter Kontrol PID</p>
+        </div>
+
+        <p :class="styleTextRegular" class="text-justify py-2">
+          Proporsional(P): Parameter proporsional (P) akan mengatur respons
+          sistem terhadap selisih antara target dan nilai aktual kelembaban.
+          Semakin besar nilai P, semakin responsif sistem terhadap perubahan
+          kelembaban, sehingga sistem akan menyesuaikan output (selang waktu
+          nyala pompa air sprinkler) lebih cepat.
+        </p>
+        <p :class="styleTextRegular" class="text-justify py-2">
+          Integral(I): Parameter integral (I) akan mengakumulasi selisih antara
+          target dan nilai aktual kelembaban dalam suatu periode waktu tertentu.
+          Semakin besar nilai I, semakin cepat sistem akan menyesuaikan output
+          (interval nyala pompa air sprinkler) jika ada kesalahan dalam
+          mempertahankan kelembaban.
+        </p>
+        <p :class="styleTextRegular" class="text-justify py-2">
+          Derivatif(D): Parameter derivatif (D) akan mengukur seberapa cepat
+          nilai kelembaban berubah. Semakin besar nilai D, semakin cepat sistem
+          akan menyesuaikan output (selang waktu nyala pompa air sprinkler) jika
+          nilai kelembaban berubah tiba-tiba. Namun, nilai P, I, D yang terlalu
+          besar/kecil dapat menyebabkan kelembaban menjadi tidak stabil atau
+          overcompensate (selang waktu nyala pompa air sprinkler terlalu sering
+          atau terlalu lama).
+        </p>
+        <p :class="styleTextRegular" class="text-justify py-2">
+          Namun, nilai P, I, D yang terlalu besar/kecil dapat menyebabkan
+          kelembaban menjadi tidak stabil atau overcompensate (selang waktu
+          nyala pompa air sprinkler terlalu sering atau terlalu lama).
+        </p>
       </div>
-    </Card>
+    </div>
   </div>
 </template>

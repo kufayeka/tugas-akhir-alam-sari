@@ -33,19 +33,11 @@ onMounted(() => {
     <Card class="flex-1 pb-32 shadow-card2">
       <div class="max-w-screen-md mx-auto">
         <h1 class="font-bold text-3xl text-md-light-primary">Monitor</h1>
-        <div v-for="i in 1" class="space-y-5">
-          <!-- <Block
-            @click="goToKumbung1()"
-            class="bg-white shadow-card1 rounded-xl h-40 p-2 active:opacity-90 active:scale-98 transition duration-50 ease-in-out"
-          >
-            <p>Kumbung Jamur 1</p>
-          </Block>
-          <Block
-            @click="goToKumbung2()"
-            class="bg-white shadow-card1 rounded-xl h-40 p-2 active:opacity-90 active:scale-98 transition duration-50 ease-in-out"
-          >
-            <p>Kumbung Jamur 2</p>
-          </Block> -->
+        <p class="text-justify text-md tracking-tighter opacity-70">
+          Halaman ini menampilkan data terkini dari setiap kumbung jamur. Klik
+          salah satu kumbung jamur di bawah untuk mulai memonitor.
+        </p>
+        <div v-for="i in 1" class="space-y-5 mt-7">
           <componentCardKumbung1DOM />
           <componentCardKumbung2DOM />
         </div>

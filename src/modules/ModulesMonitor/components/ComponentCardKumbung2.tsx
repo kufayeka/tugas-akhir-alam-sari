@@ -2,9 +2,11 @@ import { defineComponent, ref } from "vue";
 import { Button, Block, Page, Card, Preloader } from "konsta/vue";
 
 import imgBg from "../assets/image.png";
-const styleJudulDataKlimat = "text-md font-medium text-gray-600";
-const styleValueDataKlimat = "text-lg font-bold";
-const styleKolomDataKimat = "flex flex-col justify-center items-center";
+import {
+  styleKolomDataKimat,
+  styleJudulDataKlimat,
+  styleValueDataKlimat,
+} from "@/composables/tailwind-component-styles";
 
 export const componentCardKumbung2Methods = {};
 
@@ -23,12 +25,12 @@ export const componentCardKumbung2DOM = defineComponent({
             }
           >
             <p class={"text-md text-white font-bold p-1 px-2 tracking-wider"}>
-              Kumbung 2
+              Kumbung - 2
             </p>
           </div>
           <div
             class={
-              "flex flex-row bg-white shadow-md p-1 justify-between z-10 px-7"
+              "flex flex-row bg-white shadow-card1 p-1 justify-between z-10 px-7"
             }
           >
             <div class={styleKolomDataKimat}>
@@ -49,7 +51,7 @@ export const componentCardKumbung2DOM = defineComponent({
               "flex flex-row bg-white shadow-md p-3 justify-between rounded-b-md z-0"
             }
           >
-            <Button>Lihat Grafik Klimat</Button>
+            <Button class={"tracking-tighter "}>Lihat Grafik Klimat</Button>
           </div>
         </div>
       </>

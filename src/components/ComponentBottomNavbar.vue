@@ -1,42 +1,36 @@
 <script setup>
 import { kTabbar, kTabbarLink } from "konsta/vue";
-import { appNavigationEventBus } from "@/composables/app-navigation-event-bus";
-import { ref } from "vue";
-
-const tabMonitor = "tabMonitor";
-const tabKontrol = "tabKontrol";
-const tabInfo = "tabInfo";
-
-let activeTab = ref("");
+import {
+  appNavigationEventBus,
+  tabMonitor,
+  tabKontrol,
+  tabInfo,
+  activeTab,
+  arr,
+  arrPointer,
+} from "@/composables/app-navigation-event-bus";
 
 // set first activeTab = tabMonitor
 activeTab.value = tabMonitor;
 appNavigationEventBus.emit(tabMonitor);
 
-function goToMonitor() {
-  activeTab.value = tabMonitor;
-  appNavigationEventBus.emit(tabMonitor);
-}
-
-function goToKontrol() {
-  activeTab.value = tabKontrol;
-  appNavigationEventBus.emit(tabKontrol);
-}
-
-function goToInfo() {
-  activeTab.value = tabInfo;
-  appNavigationEventBus.emit(tabInfo);
+function goToTab(index) {
+  arrPointer.value = index;
+  activeTab.value = arr[index];
+  appNavigationEventBus.emit(arr[index]);
+  //console.log(activeTab.value);
 }
 </script>
+
 <template>
-  <k-tabbar class="bottom-0 left-0 fixed shadow-card1">
-    <k-tabbar-link :active="activeTab === tabMonitor" @click="goToMonitor()">
+  <k-tabbar class="bottom-0 left-0 fixed shadow-bottomNav">
+    <k-tabbar-link :active="activeTab === tabMonitor" @click="goToTab(0)">
       Monitor
     </k-tabbar-link>
-    <k-tabbar-link :active="activeTab === tabKontrol" @click="goToKontrol()">
+    <k-tabbar-link :active="activeTab === tabKontrol" @click="goToTab(1)">
       Kontrol
     </k-tabbar-link>
-    <k-tabbar-link :active="activeTab === tabInfo" @click="goToInfo()">
+    <k-tabbar-link :active="activeTab === tabInfo" @click="goToTab(2)">
       Info
     </k-tabbar-link>
   </k-tabbar>

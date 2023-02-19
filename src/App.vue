@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, onBeforeMount, onUpdated } from "vue";
+import { onMounted, ref, onBeforeMount, onUpdated, watch } from "vue";
 import { useRoute } from "vue-router";
 import {
   connect,
@@ -11,7 +11,10 @@ import {
   mqttConnectionEventListener,
   mqttMessageArrivedEventListener,
 } from "./composables/capacitorjs-mqtt-bridge-event-bus";
-import { appNavigationEventBus } from "@/composables/app-navigation-event-bus";
+import {
+  appNavigationEventBus,
+  filterSwipeAction,
+} from "@/composables/app-navigation-event-bus";
 import { App, Page } from "konsta/vue";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -35,6 +38,7 @@ import {
   viewComponentLoadingScreenDOM,
   viewComponentLoadingScreenMethods,
 } from "@/views/ViewComponentLoadingScreen";
+import { useSwipe } from "@vueuse/core";
 
 const conn = ref({});
 const mssg = ref({});
@@ -113,11 +117,20 @@ onMounted(async () => {
 });
 
 onUpdated(async () => {});
+
+const el = ref();
+const { isSwiping, direction } = useSwipe(el);
+
+watch(
+  [isSwiping, direction],
+  ([oldSwipe, oldDirection], [newSwipe, newDirection]) => {
+    filterSwipeAction(newSwipe, newDirection);
+  }
+);
 </script>
 
 <template>
-  <App theme="material">
-    <viewComponentLoadingScreenDOM />
+  <App theme="material" class="overlay" ref="el">
     <ModuleMonitor v-show="tabView === 'tabMonitor'" />
     <ModuleKontrol v-show="tabView === 'tabKontrol'" />
     <ModuleInfo v-show="tabView === 'tabInfo'" />

@@ -9,4 +9,6 @@ import { appNavigationEventBus } from "@/composables/app-navigation-event-bus";
   </Page>
 </template>
 
+<style></style>
+
 <style scoped></style>
