@@ -1,3 +1,4 @@
+import { RouteRecordRaw } from "vue-router";
 import { createApp, onBeforeMount, onMounted } from "vue";
 import { createPinia } from "pinia";
 import MainRouter from "@/router/index";
@@ -5,7 +6,7 @@ import "./assets/tailwind.css";
 import Application from "@/App.vue";
 
 // Import All Module's Bootstrapper
-import bootstrapAllModules from "@/modules-bootstrapper";
+import { allBootstrappedModules } from "@/modules-bootstrapper";
 
 // Import Capacitor Plugins
 import { App } from "@capacitor/app";
@@ -23,10 +24,14 @@ const initApp = async () => {
   const app = createApp(Application);
 
   // Use all modules bootstrapper to add global Vue plugins and components
-  bootstrapAllModules.forEach((x) => app.use(x));
+  allBootstrappedModules.forEach((x: any) => app.use(x));
 
   // Add the router and Pinia store to the Vue app
   app.use(router).use(pinia);
+
+  // Load LottieAnimation component asynchronously
+  const LottieAnimation = () => import("lottie-web-vue");
+  await LottieAnimation;
 
   // Mount the Vue app to the DOM element with ID "app"
   app.mount("#app");

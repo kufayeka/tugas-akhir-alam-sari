@@ -20,43 +20,45 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-fit flex flex-col" ref="myDiv">
-    <div class="max-w-screen-md mx-8 mt-8">
-      <h1 class="font-bold text-3xl text-md-light-primary">Info</h1>
-      <div class="flex-1 pb-32">
-        <div class="flex justify-center items-center my-7">
-          <p :class="styleTitleLgMedium">Parameter Kontrol PID</p>
-        </div>
+  <Page class="pb-20 z-0">
+    <div class="h-fit flex flex-row justify-center" ref="myDiv">
+      <div class="max-w-screen-md mx-8 mt-8">
+        <h1 class="font-bold text-3xl text-md-light-primary">Info</h1>
+        <div class="flex-1 pb-32">
+          <div class="flex justify-center items-center my-5">
+            <p :class="styleTitleLgMedium">Parameter Kontrol PID</p>
+          </div>
 
-        <p :class="styleTextRegular" class="text-justify py-2">
-          Proporsional(P): Parameter proporsional (P) akan mengatur respons
-          sistem terhadap selisih antara target dan nilai aktual kelembaban.
-          Semakin besar nilai P, semakin responsif sistem terhadap perubahan
-          kelembaban, sehingga sistem akan menyesuaikan output (selang waktu
-          nyala pompa air sprinkler) lebih cepat.
-        </p>
-        <p :class="styleTextRegular" class="text-justify py-2">
-          Integral(I): Parameter integral (I) akan mengakumulasi selisih antara
-          target dan nilai aktual kelembaban dalam suatu periode waktu tertentu.
-          Semakin besar nilai I, semakin cepat sistem akan menyesuaikan output
-          (interval nyala pompa air sprinkler) jika ada kesalahan dalam
-          mempertahankan kelembaban.
-        </p>
-        <p :class="styleTextRegular" class="text-justify py-2">
-          Derivatif(D): Parameter derivatif (D) akan mengukur seberapa cepat
-          nilai kelembaban berubah. Semakin besar nilai D, semakin cepat sistem
-          akan menyesuaikan output (selang waktu nyala pompa air sprinkler) jika
-          nilai kelembaban berubah tiba-tiba. Namun, nilai P, I, D yang terlalu
-          besar/kecil dapat menyebabkan kelembaban menjadi tidak stabil atau
-          overcompensate (selang waktu nyala pompa air sprinkler terlalu sering
-          atau terlalu lama).
-        </p>
-        <p :class="styleTextRegular" class="text-justify py-2">
-          Namun, nilai P, I, D yang terlalu besar/kecil dapat menyebabkan
-          kelembaban menjadi tidak stabil atau overcompensate (selang waktu
-          nyala pompa air sprinkler terlalu sering atau terlalu lama).
-        </p>
+          <p :class="styleTextRegular" class="text-justify py-2">
+            Proporsional(P): Parameter proporsional (P) akan mengatur respons
+            sistem terhadap selisih antara target dan nilai aktual kelembaban.
+            Semakin besar nilai P, semakin responsif sistem terhadap perubahan
+            kelembaban, sehingga sistem akan menyesuaikan output (selang waktu
+            nyala pompa air sprinkler) lebih cepat.
+          </p>
+          <p :class="styleTextRegular" class="text-justify py-2">
+            Integral(I): Parameter integral (I) akan mengakumulasi selisih
+            antara target dan nilai aktual kelembaban dalam suatu periode waktu
+            tertentu. Semakin besar nilai I, semakin cepat sistem akan
+            menyesuaikan output (interval nyala pompa air sprinkler) jika ada
+            kesalahan dalam mempertahankan kelembaban.
+          </p>
+          <p :class="styleTextRegular" class="text-justify py-2">
+            Derivatif(D): Parameter derivatif (D) akan mengukur seberapa cepat
+            nilai kelembaban berubah. Semakin besar nilai D, semakin cepat
+            sistem akan menyesuaikan output (selang waktu nyala pompa air
+            sprinkler) jika nilai kelembaban berubah tiba-tiba. Namun, nilai P,
+            I, D yang terlalu besar/kecil dapat menyebabkan kelembaban menjadi
+            tidak stabil atau overcompensate (selang waktu nyala pompa air
+            sprinkler terlalu sering atau terlalu lama).
+          </p>
+          <p :class="styleTextRegular" class="text-justify py-2">
+            Namun, nilai P, I, D yang terlalu besar/kecil dapat menyebabkan
+            kelembaban menjadi tidak stabil atau overcompensate (selang waktu
+            nyala pompa air sprinkler terlalu sering atau terlalu lama).
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </Page>
 </template>
