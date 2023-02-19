@@ -1,21 +1,292 @@
-<MainPage>
-  <BigText>Kontrol</BigText>
-  <LightText>
-    Berikut adalah pengaturan parameter sistem Kumbung jamur.
-  </LightText>
-  <WhiteCard>
-    <MediumText>Target Kelembaban</MediumText>
-    <InputValue></InputValue> <SmallText>RH</SmallText>
-    <button>Simpan</button>
-  </WhiteCard>
-  <WhiteCard>
-    <MediumText>Interval Pembacaan</MediumText>
-    <InputValue></InputValue> <SmallText>Menit</SmallText>
-    <button>Simpan</button>
-  </WhiteCard>
-  <WhiteCard>
-    <MediumText>Parameter PID</MediumText>
-    "all the parameters inputbox"
-    <button>Simpan</button>
-  </WhiteCard>
-</MainPage>
+can you implement this sliding tab view: "
+<template>
+  <div class="flex flex-col h-screen">
+    <nav class="flex justify-around bg-gray-200">
+      <button
+        v-for="(tab, index) in tabs"
+        :key="tab"
+        :class="{
+          'bg-gray-300': activeTab === index,
+          'bg-gray-200': activeTab !== index,
+        }"
+        @click="activeTab = index"
+      >
+        {{ tab }}
+      </button>
+    </nav>
+
+    <div class="flex-1 overflow-hidden">
+      <transition :name="transitionName">
+        <div
+          :key="activeTab"
+          class="h-full flex"
+          :class="{ 'flex-row-reverse': isReversed }"
+        >
+          <div
+            v-for="(tab, index) in tabs"
+            :key="tab"
+            class="w-full"
+            v-show="activeTab === index"
+          >
+            <template v-if="index === 0">
+              this is TabMonitor from App.vue
+            </template>
+            <template v-else-if="index === 1">
+              this is tabKontrol from App.vue
+            </template>
+            <template v-else> this is TabInfo from App.vue </template>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { ref, computed } from "vue";
+
+  const tabs = ["Tab 1", "Tab 2", "Tab 3"];
+  const activeTab = ref(0);
+
+  const transitionName = computed(() => {
+    return isReversed.value ? "slide-reverse" : "slide";
+  });
+
+  const isReversed = computed(() => {
+    const currentIndex = activeTab.value;
+    const lastIndex = tabs.length - 1;
+    return currentIndex > 0 && currentIndex < lastIndex;
+  });
+</script>
+
+<style>
+  .slide-enter-active,
+  .slide-leave-active,
+  .slide-reverse-enter-active,
+  .slide-reverse-leave-active {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide-enter,
+  .slide-leave-to {
+    transform: translateX(-100%);
+  }
+
+  .slide-reverse-enter,
+  .slide-reverse-leave-to {
+    transform: translateX(100%);
+  }
+
+  .flex-row-reverse > * {
+    order: 2;
+  }
+</style>
+" into this "App.vue" component: "
+<script setup lang="ts">
+  // Vue
+  import {
+    onMounted,
+    ref,
+    onBeforeMount,
+    onUpdated,
+    watch,
+    defineAsyncComponent,
+  } from "vue";
+
+  // CapacitorJS MQTT Bridge
+  import {
+    connect,
+    disconnect,
+    publish,
+    subscribe,
+  } from "@/service/capacitorjs-mqtt-bridge";
+  import {
+    mqttConnectionEventListener,
+    mqttMessageArrivedEventListener,
+  } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+
+  // App Navigation
+  import {
+    appNavigationEventBus,
+    arrTabView,
+    arrTabViewPointer,
+    filterSwipeAction,
+  } from "@/composables/app-navigation-event-bus";
+  import { useSwipe } from "@vueuse/core";
+
+  // Capacitor
+  import { SplashScreen } from "@capacitor/splash-screen";
+
+  // Konsta
+  import { App } from "konsta/vue";
+
+  // Async Components
+  const ComponentBottomNavbar = defineAsyncComponent(
+    () => import("@/components/ComponentBottomNavbar.vue")
+  );
+  const ModuleMonitor = defineAsyncComponent(
+    () => import("@/modules/ModulesMonitor/ModuleMonitor.vue")
+  );
+  const ModuleKontrol = defineAsyncComponent(
+    () => import("@/modules/ModulesKontrol/ModuleKontrol.vue")
+  );
+  const ModuleInfo = defineAsyncComponent(
+    () => import("@/modules/ModulesInfo/ModuleInfo.vue")
+  );
+
+  const conn = ref({});
+  const mssg = ref({});
+  const activeTab = ref("");
+  const topicA = "brrr1";
+  const topicB = "brrr2";
+  const topicC = "brrr3";
+  const topicAMsg = ref("");
+  const topicBMsg = ref("");
+  const topicCMsg = ref("");
+
+  function mqttConnect() {
+    connect();
+  }
+
+  function mqttDisconnect() {
+    disconnect();
+  }
+
+  function mqttPublish1() {
+    publish("brrr1", "this is 1", 2, true);
+  }
+
+  function mqttPublish2() {
+    publish("brrr2", "this is 2", 2, true);
+  }
+
+  function mqttPublish3() {
+    publish("brrr3", "this is 3", 2, true);
+  }
+
+  mqttConnectionEventListener.on((x) => {
+    conn.value = x.connected;
+
+    if (conn.value == true) {
+      // tambah if... subscribe hanya pas connect...
+      subscribe("brrr1", 2);
+      subscribe("brrr2", 2);
+      subscribe("brrr3", 2);
+    }
+  });
+
+  mqttMessageArrivedEventListener.on((x) => {
+    mssg.value = x.message;
+    filterMessages(x.message);
+  });
+
+  function filterMessages(x: any) {
+    switch (x.topic) {
+      case topicA:
+        topicAMsg.value = x.message;
+        break;
+      case topicB:
+        topicBMsg.value = x.message;
+        break;
+      case topicC:
+        topicCMsg.value = x.message;
+        break;
+    }
+  }
+
+  appNavigationEventBus.on((x) => {
+    activeTab.value = x;
+  });
+
+  window.addEventListener("load", async () => {
+    // Hide the splash screen once the webview component is fully loaded
+    console.log("Webview component loaded");
+  });
+
+  onMounted(async () => {
+    mqttConnect();
+    await SplashScreen.hide();
+  });
+
+  onUpdated(async () => {});
+
+  const el = ref();
+  const { isSwiping, direction } = useSwipe(el);
+
+  watch(
+    [isSwiping, direction],
+    ([oldSwipe, oldDirection], [newSwipe, newDirection]) => {
+      filterSwipeAction(newSwipe, newDirection);
+    }
+  );
+</script>
+
+<template>
+  <App theme="material" ref="el">
+    <ModuleMonitor v-show="activeTab === arrTabView[0]" />
+    <ModuleKontrol v-show="activeTab === arrTabView[1]" />
+    <ModuleInfo v-show="activeTab === arrTabView[2]" />
+    <ComponentBottomNavbar />
+  </App>
+</template>
+
+<style></style>
+" and this is the ComponentBottomNavbar code:
+<script setup>
+  // Import components and variables
+  import { Tabbar, TabbarLink } from "konsta/vue";
+  import {
+    goToTab,
+    activeTab,
+    arrTabView,
+    appNavigationEventBus,
+    TabView,
+  } from "@/composables/app-navigation-event-bus";
+
+  // Set the first active tab to tabMonitor
+  activeTab.value = TabView.Monitor;
+
+  // Emit the first active tab to the appNavigationEventBus
+  appNavigationEventBus.emit(TabView.Monitor);
+</script>
+
+<template>
+  <Tabbar class="bottom-0 left-0 fixed shadow-bottomNav">
+    <TabbarLink :active="activeTab === arrTabView[0]" @click="goToTab(0)">
+      Monitor
+    </TabbarLink>
+    <TabbarLink :active="activeTab === arrTabView[1]" @click="goToTab(1)">
+      Kontrol
+    </TabbarLink>
+    <TabbarLink :active="activeTab === arrTabView[2]" @click="goToTab(2)">
+      Info
+    </TabbarLink>
+  </Tabbar>
+</template>
+
+and this is the app-navigation-event-bus.ts code: import { SwipeDirection,
+useEventBus } from "@vueuse/core"; import { ref } from "vue"; // Define an enum
+for tab views. export enum TabView { Monitor = "tabMonitor", Kontrol =
+"tabKontrol", Info = "tabInfo", } // Create an event bus for the app navigation.
+export const appNavigationEventBus = useEventBus<any
+  >("appNavigation"); // Store the tab views in an array. export const
+  arrTabView = [TabView.Monitor, TabView.Kontrol, TabView.Info]; // Use a ref to
+  keep track of the active tab view. export const arrTabViewPointer = ref(0);
+  export const activeTab = ref(""); // Define a function that changes the active
+  tab export function goToTab(index: number) { // Set the current tab index
+  arrTabViewPointer.value = index; // Set the current active tab activeTab.value
+  = arrTabView[index]; // Emit the active tab to the appNavigationEventBus
+  appNavigationEventBus.emit(arrTabView[index]); // Log the active tab to the
+  console // console.log(activeTab.value); } // A function to handle swipes and
+  change the active tab view accordingly. export function filterSwipeAction(
+  swipe: boolean, direction: SwipeDirection | null ) { // Cache the length of
+  the array for better performance. const length = arrTabView.length; if (swipe
+  && direction === SwipeDirection.LEFT) { // Increase the pointer to switch to
+  the next tab view. arrTabViewPointer.value = Math.min(arrTabViewPointer.value
+  + 1, length - 1); } else if (swipe && direction === SwipeDirection.RIGHT) { //
+  Decrease the pointer to switch to the previous tab view.
+  arrTabViewPointer.value = Math.max(arrTabViewPointer.value - 1, 0); } //
+  Update the active tab view with the current pointer. activeTab.value =
+  arrTabView[arrTabViewPointer.value]; // Emit the active tab view through the
+  event bus. appNavigationEventBus.emit(activeTab.value); } thanks</any
+>

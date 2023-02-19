@@ -8,10 +8,23 @@ import {
   styleValueDataKlimat,
 } from "@/composables/tailwind-component-styles";
 
+import { useRouter } from "vue-router";
+import { showSpinner } from "@/composables/capacitorjs-native-spinner";
+import useDelay from "@/composables/use-delay";
+
 export const componentCardKumbung2Methods = {};
 
 export const componentCardKumbung2DOM = defineComponent({
   setup() {
+    const router = useRouter();
+    const { delay } = useDelay();
+
+    async function goToGrafikView() {
+      showSpinner();
+      await delay(1);
+      router.push("/monitor/kumbung2");
+    }
+
     return () => (
       <>
         <div class={"bg-white shadow-card1 rounded-md flex flex-col z-0"}>
@@ -21,7 +34,7 @@ export const componentCardKumbung2DOM = defineComponent({
           />
           <div
             class={
-              "absolute z-10 bg-black-overlay rounded-3xl justify-center items-center ml-2 mt-2 border border-white"
+              "absolute z-10 bg-black-overlay rounded-3xl justify-center items-center ml-2 mt-2 border border-white "
             }
           >
             <p class={"text-md text-white font-bold p-1 px-2 tracking-wider"}>
@@ -51,7 +64,12 @@ export const componentCardKumbung2DOM = defineComponent({
               "flex flex-row bg-white shadow-md p-3 justify-between rounded-b-md z-0"
             }
           >
-            <Button class={"tracking-tighter "}>Lihat Grafik Klimat</Button>
+            <Button
+              class={"tracking-tighter "}
+              onClick={() => goToGrafikView()}
+            >
+              Lihat Grafik Klimat
+            </Button>
           </div>
         </div>
       </>

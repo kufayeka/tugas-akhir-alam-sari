@@ -1,8 +1,11 @@
 import { Screen } from "capacitorjs-screen-plugin";
 
-export function setLandscape() {
-  Screen.setLandscape();
+export async function setLandscape(): Promise<{ result: string }> {
+  const { result } = await Screen.setLandscape();
+  return { result };
 }
-export function setPortrait() {
-  Screen.setPortrait();
+
+export async function setPortrait(): Promise<{ result: string }> {
+  const { result } = await Screen.setPortrait();
+  return { result };
 }

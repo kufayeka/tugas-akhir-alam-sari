@@ -50,8 +50,7 @@ const ModuleInfo = defineAsyncComponent(
   () => import("@/modules/ModulesInfo/ModuleInfo.vue")
 );
 
-// Define reactive variables with initial values
-const conn = ref({});
+const conn = ref(false);
 const mssg = ref({});
 const activeTab = ref("");
 const topicA = "brrr1";
@@ -61,7 +60,6 @@ const topicAMsg = ref("");
 const topicBMsg = ref("");
 const topicCMsg = ref("");
 
-// Functions for MQTT communication
 function mqttConnect() {
   connect();
 }
@@ -82,12 +80,11 @@ function mqttPublish3() {
   publish("brrr3", "this is 3", 2, true);
 }
 
-// Event listeners for MQTT communication
 mqttConnectionEventListener.on((x) => {
   conn.value = x.connected;
 
   if (conn.value == true) {
-    // Subscribe to topics once connected
+    // tambah if... subscribe hanya pas connect...
     subscribe("brrr1", 2);
     subscribe("brrr2", 2);
     subscribe("brrr3", 2);
@@ -99,7 +96,6 @@ mqttMessageArrivedEventListener.on((x) => {
   filterMessages(x.message);
 });
 
-// Filter messages based on topic
 function filterMessages(x: any) {
   switch (x.topic) {
     case topicA:
@@ -114,40 +110,62 @@ function filterMessages(x: any) {
   }
 }
 
-// Event listener for navigation between tabs
-appNavigationEventBus.on((x) => {
-  activeTab.value = x;
-});
-
-// Event listener for page load
 window.addEventListener("load", async () => {
   // Hide the splash screen once the webview component is fully loaded
   console.log("Webview component loaded");
-  await SplashScreen.hide();
 });
 
-// Event listener for component mount
-onMounted(async () => {
-  mqttConnect();
-});
-
-// Event listener for component update
-onUpdated(async () => {});
-
-// Reactive variable for swipe detection
 const el = ref();
 const { isSwiping, direction } = useSwipe(el);
 
-// Watch for changes in swipe direction
 watch(
   [isSwiping, direction],
   ([oldSwipe, oldDirection], [newSwipe, newDirection]) => {
     filterSwipeAction(newSwipe, newDirection);
   }
 );
+
+appNavigationEventBus.on((x) => {
+  activeTab.value = x;
+});
+
+const oldTab = ref();
+const newTab = ref();
+
+watch([activeTab], ([newActiveTab], [oldActiveTab]) => {
+  oldTab.value = oldActiveTab;
+  newTab.value = newActiveTab;
+});
+
+const fps = ref(0);
+let lastTime = 0;
+let frameCount = 0;
+
+function measureFPS(timestamp: number) {
+  if (lastTime === 0) {
+    lastTime = timestamp;
+  }
+  const elapsed = timestamp - lastTime;
+  if (elapsed >= 1000) {
+    fps.value = Math.round(frameCount / (elapsed / 1000));
+    lastTime = timestamp;
+    frameCount = 0;
+  }
+  frameCount++;
+  window.requestAnimationFrame(measureFPS);
+}
+
+onMounted(async () => {
+  mqttConnect();
+  await SplashScreen.hide();
+  window.requestAnimationFrame(measureFPS);
+});
+
+onUpdated(async () => {});
 </script>
 
 <template>
+  <p class="sticky top-0">FPS: {{ fps }}, MQTT: {{ conn }}</p>
   <App theme="material" ref="el">
     <ModuleMonitor v-show="activeTab === arrTabView[0]" />
     <ModuleKontrol v-show="activeTab === arrTabView[1]" />
