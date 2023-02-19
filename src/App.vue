@@ -1,48 +1,59 @@
 <script setup lang="ts">
-import { onMounted, ref, onBeforeMount, onUpdated, watch } from "vue";
-import { useRoute } from "vue-router";
+// Vue
+import {
+  onMounted,
+  ref,
+  onBeforeMount,
+  onUpdated,
+  watch,
+  defineAsyncComponent,
+} from "vue";
+
+// CapacitorJS MQTT Bridge
 import {
   connect,
   disconnect,
   publish,
   subscribe,
-} from "./service/capacitorjs-mqtt-bridge";
+} from "@/service/capacitorjs-mqtt-bridge";
 import {
   mqttConnectionEventListener,
   mqttMessageArrivedEventListener,
-} from "./composables/capacitorjs-mqtt-bridge-event-bus";
+} from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+
+// App Navigation
 import {
   appNavigationEventBus,
+  arrTabView,
+  arrTabViewPointer,
   filterSwipeAction,
 } from "@/composables/app-navigation-event-bus";
-import { App, Page } from "konsta/vue";
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-creative";
-import "@/assets/swiper-style.css";
-
-import { SplashScreen } from "@capacitor/splash-screen";
-
-// import required modules
-import { EffectCreative, Pagination } from "swiper";
-
-import ComponentBottomNavbar from "@/components/ComponentBottomNavbar.vue";
-import ModuleMonitor from "@/modules/ModulesMonitor/ModuleMonitor.vue";
-import ModuleKontrol from "@/modules/ModulesKontrol/ModuleKontrol.vue";
-import ModuleInfo from "@/modules/ModulesInfo/ModuleInfo.vue";
-import {
-  viewComponentLoadingScreenDOM,
-  viewComponentLoadingScreenMethods,
-} from "@/views/ViewComponentLoadingScreen";
 import { useSwipe } from "@vueuse/core";
 
+// Capacitor
+import { SplashScreen } from "@capacitor/splash-screen";
+
+// Konsta
+import { App } from "konsta/vue";
+
+// Async Components
+const ComponentBottomNavbar = defineAsyncComponent(
+  () => import("@/components/ComponentBottomNavbar.vue")
+);
+const ModuleMonitor = defineAsyncComponent(
+  () => import("@/modules/ModulesMonitor/ModuleMonitor.vue")
+);
+const ModuleKontrol = defineAsyncComponent(
+  () => import("@/modules/ModulesKontrol/ModuleKontrol.vue")
+);
+const ModuleInfo = defineAsyncComponent(
+  () => import("@/modules/ModulesInfo/ModuleInfo.vue")
+);
+
+// Define reactive variables with initial values
 const conn = ref({});
 const mssg = ref({});
-const tabView = ref("");
+const activeTab = ref("");
 const topicA = "brrr1";
 const topicB = "brrr2";
 const topicC = "brrr3";
@@ -50,8 +61,7 @@ const topicAMsg = ref("");
 const topicBMsg = ref("");
 const topicCMsg = ref("");
 
-const modules = [EffectCreative, Pagination];
-
+// Functions for MQTT communication
 function mqttConnect() {
   connect();
 }
@@ -72,11 +82,12 @@ function mqttPublish3() {
   publish("brrr3", "this is 3", 2, true);
 }
 
+// Event listeners for MQTT communication
 mqttConnectionEventListener.on((x) => {
   conn.value = x.connected;
 
   if (conn.value == true) {
-    // tambah if... subscribe hanya pas connect...
+    // Subscribe to topics once connected
     subscribe("brrr1", 2);
     subscribe("brrr2", 2);
     subscribe("brrr3", 2);
@@ -88,6 +99,7 @@ mqttMessageArrivedEventListener.on((x) => {
   filterMessages(x.message);
 });
 
+// Filter messages based on topic
 function filterMessages(x: any) {
   switch (x.topic) {
     case topicA:
@@ -102,25 +114,31 @@ function filterMessages(x: any) {
   }
 }
 
+// Event listener for navigation between tabs
 appNavigationEventBus.on((x) => {
-  tabView.value = x;
+  activeTab.value = x;
 });
 
+// Event listener for page load
 window.addEventListener("load", async () => {
   // Hide the splash screen once the webview component is fully loaded
   console.log("Webview component loaded");
-});
-
-onMounted(async () => {
-  mqttConnect();
   await SplashScreen.hide();
 });
 
+// Event listener for component mount
+onMounted(async () => {
+  mqttConnect();
+});
+
+// Event listener for component update
 onUpdated(async () => {});
 
+// Reactive variable for swipe detection
 const el = ref();
 const { isSwiping, direction } = useSwipe(el);
 
+// Watch for changes in swipe direction
 watch(
   [isSwiping, direction],
   ([oldSwipe, oldDirection], [newSwipe, newDirection]) => {
@@ -130,10 +148,10 @@ watch(
 </script>
 
 <template>
-  <App theme="material" class="overlay" ref="el">
-    <ModuleMonitor v-show="tabView === 'tabMonitor'" />
-    <ModuleKontrol v-show="tabView === 'tabKontrol'" />
-    <ModuleInfo v-show="tabView === 'tabInfo'" />
+  <App theme="material" ref="el">
+    <ModuleMonitor v-show="activeTab === arrTabView[0]" />
+    <ModuleKontrol v-show="activeTab === arrTabView[1]" />
+    <ModuleInfo v-show="activeTab === arrTabView[2]" />
     <ComponentBottomNavbar />
   </App>
 </template>

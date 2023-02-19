@@ -1,37 +1,31 @@
 <script setup>
-import { kTabbar, kTabbarLink } from "konsta/vue";
+// Import components and variables
+import { Tabbar, TabbarLink } from "konsta/vue";
 import {
-  appNavigationEventBus,
-  tabMonitor,
-  tabKontrol,
-  tabInfo,
+  goToTab,
   activeTab,
-  arr,
-  arrPointer,
+  arrTabView,
+  appNavigationEventBus,
+  TabView,
 } from "@/composables/app-navigation-event-bus";
 
-// set first activeTab = tabMonitor
-activeTab.value = tabMonitor;
-appNavigationEventBus.emit(tabMonitor);
+// Set the first active tab to tabMonitor
+activeTab.value = TabView.Monitor;
 
-function goToTab(index) {
-  arrPointer.value = index;
-  activeTab.value = arr[index];
-  appNavigationEventBus.emit(arr[index]);
-  //console.log(activeTab.value);
-}
+// Emit the first active tab to the appNavigationEventBus
+appNavigationEventBus.emit(TabView.Monitor);
 </script>
 
 <template>
-  <k-tabbar class="bottom-0 left-0 fixed shadow-bottomNav">
-    <k-tabbar-link :active="activeTab === tabMonitor" @click="goToTab(0)">
+  <Tabbar class="bottom-0 left-0 fixed shadow-bottomNav">
+    <TabbarLink :active="activeTab === arrTabView[0]" @click="goToTab(0)">
       Monitor
-    </k-tabbar-link>
-    <k-tabbar-link :active="activeTab === tabKontrol" @click="goToTab(1)">
+    </TabbarLink>
+    <TabbarLink :active="activeTab === arrTabView[1]" @click="goToTab(1)">
       Kontrol
-    </k-tabbar-link>
-    <k-tabbar-link :active="activeTab === tabInfo" @click="goToTab(2)">
+    </TabbarLink>
+    <TabbarLink :active="activeTab === arrTabView[2]" @click="goToTab(2)">
       Info
-    </k-tabbar-link>
-  </k-tabbar>
+    </TabbarLink>
+  </Tabbar>
 </template>

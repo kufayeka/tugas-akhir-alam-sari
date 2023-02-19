@@ -1,34 +1,25 @@
 import { MqttBridge } from "capacitorjs-mqtt-bridge";
 
-const mqttOpt = {
+// Set the MQTT server connection options
+const mqttOptions = {
   serverURI: "tcp://broker.hivemq.com",
   port: 1883,
 };
 
-function connect() {
-  MqttBridge.mqttConnect(mqttOpt);
-}
+// Connect to the MQTT server with the given options
+export const connect = () => MqttBridge.mqttConnect(mqttOptions);
 
-function disconnect() {
-  MqttBridge.mqttDisconnect();
-}
+// Disconnect from the MQTT server
+export const disconnect = () => MqttBridge.mqttDisconnect();
 
-function publish(
+// Publish a message to the given topic with the given payload, QoS, and retained flag
+export const publish = (
   topic: string,
   payload: string,
   qos: number,
   retained: boolean
-) {
-  MqttBridge.mqttPublish({
-    topic: topic,
-    payload: payload,
-    qos: qos,
-    retained: retained,
-  });
-}
+) => MqttBridge.mqttPublish({ topic, payload, qos, retained });
 
-function subscribe(topic: string, qos: number) {
-  MqttBridge.mqttSubscribe({ topic: topic, qos: qos });
-}
-
-export { connect, disconnect, publish, subscribe };
+// Subscribe to messages on the given topic with the given QoS level
+export const subscribe = (topic: string, qos: number) =>
+  MqttBridge.mqttSubscribe({ topic, qos });
