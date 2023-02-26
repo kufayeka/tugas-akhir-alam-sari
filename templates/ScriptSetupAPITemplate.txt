@@ -1,0 +1,25 @@
+<script setup lang="ts">
+import { ref, computed, watch, onMounted } from "vue";
+
+// Define your reactive state using the "ref" function
+const state = ref();
+
+// Define your computed properties using the "computed" function
+const computedProperty = computed(() => {});
+
+// Define your custom function
+function yourCustomFunction() {}
+
+// Define a watcher using the "watch" function
+watch(state, (newState, oldState) => {});
+
+// Define code to run when the component is mounted using the "onMounted" function
+onMounted(() => {});
+</script>
+
+<template>
+  <!-- Your template code goes here -->
+  <div>Script Setup API</div>
+  <!-- Your template's own RouterView -->
+  <RouterView />
+</template>

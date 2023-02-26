@@ -5,7 +5,6 @@ import {
   setPortrait,
 } from "@/composables/capacitorjs-screen-controller";
 import useDelay from "@/composables/use-delay";
-import { viewComponentLoadingScreenMethods } from "@/views/ViewComponentLoadingScreen";
 import { Card, Block, Button, Page } from "konsta/vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";

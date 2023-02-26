@@ -11,15 +11,12 @@ import {
 
 // CapacitorJS MQTT Bridge
 import {
-  connect,
-  disconnect,
-  publish,
+  mqttConnect,
+  mqttDisconnect,
   subscribe,
+  publish,
 } from "@/service/capacitorjs-mqtt-bridge";
-import {
-  mqttConnectionEventListener,
-  mqttMessageArrivedEventListener,
-} from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 
 // App Navigation
 import {
@@ -34,7 +31,7 @@ import { useSwipe } from "@vueuse/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 
 // Konsta
-import { App } from "konsta/vue";
+import { App, Button } from "konsta/vue";
 
 // Async Components
 const ComponentBottomNavbar = defineAsyncComponent(
@@ -60,56 +57,6 @@ const topicAMsg = ref("");
 const topicBMsg = ref("");
 const topicCMsg = ref("");
 
-function mqttConnect() {
-  connect();
-}
-
-function mqttDisconnect() {
-  disconnect();
-}
-
-function mqttPublish1() {
-  publish("brrr1", "this is 1", 2, true);
-}
-
-function mqttPublish2() {
-  publish("brrr2", "this is 2", 2, true);
-}
-
-function mqttPublish3() {
-  publish("brrr3", "this is 3", 2, true);
-}
-
-mqttConnectionEventListener.on((x) => {
-  conn.value = x.connected;
-
-  if (conn.value == true) {
-    // tambah if... subscribe hanya pas connect...
-    subscribe("brrr1", 2);
-    subscribe("brrr2", 2);
-    subscribe("brrr3", 2);
-  }
-});
-
-mqttMessageArrivedEventListener.on((x) => {
-  mssg.value = x.message;
-  filterMessages(x.message);
-});
-
-function filterMessages(x: any) {
-  switch (x.topic) {
-    case topicA:
-      topicAMsg.value = x.message;
-      break;
-    case topicB:
-      topicBMsg.value = x.message;
-      break;
-    case topicC:
-      topicCMsg.value = x.message;
-      break;
-  }
-}
-
 window.addEventListener("load", async () => {
   // Hide the splash screen once the webview component is fully loaded
   console.log("Webview component loaded");
@@ -129,43 +76,14 @@ appNavigationEventBus.on((x) => {
   activeTab.value = x;
 });
 
-const oldTab = ref();
-const newTab = ref();
-
-watch([activeTab], ([newActiveTab], [oldActiveTab]) => {
-  oldTab.value = oldActiveTab;
-  newTab.value = newActiveTab;
-});
-
-const fps = ref(0);
-let lastTime = 0;
-let frameCount = 0;
-
-function measureFPS(timestamp: number) {
-  if (lastTime === 0) {
-    lastTime = timestamp;
-  }
-  const elapsed = timestamp - lastTime;
-  if (elapsed >= 1000) {
-    fps.value = Math.round(frameCount / (elapsed / 1000));
-    lastTime = timestamp;
-    frameCount = 0;
-  }
-  frameCount++;
-  window.requestAnimationFrame(measureFPS);
-}
-
 onMounted(async () => {
-  mqttConnect();
   await SplashScreen.hide();
-  window.requestAnimationFrame(measureFPS);
 });
 
 onUpdated(async () => {});
 </script>
 
 <template>
-  <p class="sticky top-0">FPS: {{ fps }}, MQTT: {{ conn }}</p>
   <App theme="material" ref="el">
     <ModuleMonitor v-show="activeTab === arrTabView[0]" />
     <ModuleKontrol v-show="activeTab === arrTabView[1]" />

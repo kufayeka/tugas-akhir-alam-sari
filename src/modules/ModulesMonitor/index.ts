@@ -1,4 +1,5 @@
-const router = () => import("./router");
-export default {
-  router,
-};
+import router from "./router";
+
+const moduleName = "ModuleMonitor";
+
+export { moduleName, router };

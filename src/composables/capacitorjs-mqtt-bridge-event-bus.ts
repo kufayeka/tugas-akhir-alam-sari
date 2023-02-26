@@ -1,18 +1,27 @@
 import { useEventBus } from "@vueuse/core";
-import { MqttBridge } from "capacitorjs-mqtt-bridge";
+import { MqttBridge } from "capacitor-mqtt-native-plugin";
 
 // create event buses to listen for mqtt connection and message events
-const mqttConnectionEventListener = useEventBus<any>("mqttConn");
-const mqttMessageArrivedEventListener = useEventBus<any>("mqttMssg");
+const mqttConnectCompleteListener = useEventBus<any>("onConnectComplete");
+const mqttConnectinLostEventListener = useEventBus<any>("onConnectionLost");
+const mqttMessageArrivedEventListener = useEventBus<any>("onMessageArrived");
 
 // add listeners to the MqttBridge for connection and message events and emit the events to the corresponding event buses
-MqttBridge.addListener("mqttConnection", (x: any) => {
-  mqttConnectionEventListener.emit(x);
+MqttBridge.addListener("onConnectComplete", (x: any) => {
+  mqttConnectCompleteListener.emit(x);
 });
 
-MqttBridge.addListener("messageArrived", (x: any) => {
+MqttBridge.addListener("onConnectionLost", (x: any) => {
+  mqttConnectinLostEventListener.emit(x);
+});
+
+MqttBridge.addListener("onMessageArrived", (x: any) => {
   mqttMessageArrivedEventListener.emit(x);
 });
 
 // export the event buses for mqtt connection and message events
-export { mqttConnectionEventListener, mqttMessageArrivedEventListener };
+export {
+  mqttConnectCompleteListener,
+  mqttConnectinLostEventListener,
+  mqttMessageArrivedEventListener,
+};

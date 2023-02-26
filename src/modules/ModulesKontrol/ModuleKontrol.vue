@@ -1,6 +1,50 @@
 <script setup lang="ts">
 import { Block, Button, Card, Page } from "konsta/vue";
 import { ref, onMounted } from "vue";
+import {
+  mqttConnect,
+  mqttDisconnect,
+  subscribe,
+  publish,
+} from "@/service/capacitorjs-mqtt-bridge";
+
+import {
+  mqttConnectCompleteListener,
+  mqttConnectinLostEventListener,
+  mqttMessageArrivedEventListener,
+} from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+
+const connectionStatusLog = ref([{}]);
+const incomingMessagesLog = ref([{}]);
+
+mqttConnectCompleteListener.on((x: any) => {
+  var y = {
+    status: "connected",
+    reconnected: x.reconnected,
+    serverURI: x.serverURI,
+  };
+  connectionStatusLog.value.push(y);
+});
+
+mqttConnectinLostEventListener.on((x: any) => {
+  var y = {
+    status: "disconnected",
+    connectionStatus: x.connectionStatus,
+    mqttReasonCode: x.reasonCode,
+    message: x.message,
+  };
+  connectionStatusLog.value.push(y);
+});
+
+mqttMessageArrivedEventListener.on((x: any) => {
+  var y = {
+    status: "Received a new message",
+    topic: x.topic,
+    message: x.message,
+  };
+  incomingMessagesLog.value.push(y);
+});
+
 const myDiv = ref();
 onMounted(() => {
   // set the main card height to fill the screen when the content inside can't
@@ -11,16 +55,36 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-fit flex flex-col justify-between" ref="myDiv">
-    <Card class="flex-1 pb-16 shadow-card2">
-      <div class="max-w-screen-md mx-auto">
-        <h1 class="font-bold text-3xl text-md-light-primary">Kontrol</h1>
-        <Block
-          class="bg-white shadow-card1 rounded-xl h-40 p-2 active:opacity-90 active:scale-98 transition duration-50 ease-in-out"
-        >
-          <p>setting1</p>
-        </Block>
+  <Page class="pb-20 z-0">
+    <div class="h-fit flex flex-col justify-between" ref="myDiv">
+      <Card class="flex-1 pb-32 shadow-card2">
+        <div class="max-w-screen-md mx-auto">
+          <h1 class="font-bold text-3xl text-md-light-primary">Kontrol</h1>
+          <p class="text-justify text-md tracking-tighter opacity-70">
+            Halaman ini menampilkan data terkini dari setiap kumbung jamur. Klik
+            salah satu kumbung jamur di bawah untuk mulai memonitor.
+          </p>
+          <div v-for="i in 1">
+            <div class="space-y-7">
+              <Button @click="mqttConnect()">Connect</Button>
+              <Button @click="mqttDisconnect()">Disconnect</Button>
+              <Button @click="subscribe()">Subscribe</Button>
+              <Button @click="publish()">Publish</Button>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+    <div>
+      <b>Connection Status:</b>
+      <div v-for="i in connectionStatusLog">
+        <p>{{ i }}</p>
       </div>
-    </Card>
-  </div>
+
+      <b>Incoming Messages:</b>
+      <div v-for="i in incomingMessagesLog">
+        <p>{{ i }}</p>
+      </div>
+    </div>
+  </Page>
 </template>

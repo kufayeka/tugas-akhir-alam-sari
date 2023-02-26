@@ -1,0 +1,27 @@
+<script>
+export default {
+  data() {
+    return {
+      // Your reactive data properties go here
+    };
+  },
+  computed: {
+    // Your computed properties go here
+  },
+  methods: {
+    // Your component methods go here
+  },
+  mounted() {
+    // Code to run when the component is mounted goes here
+  },
+
+  // Other component options (e.g. "watch", "props") can go here
+};
+</script>
+
+<template>
+  <!-- Your template code goes here -->
+  <div>Option API</div>
+  <!-- Your template's own RouterView -->
+  <RouterView />
+</template>

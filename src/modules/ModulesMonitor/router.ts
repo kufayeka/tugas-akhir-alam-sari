@@ -25,8 +25,6 @@ const moduleRoute = {
   ],
 };
 
-async function ModuleMonitorRouter() {
+export default function () {
   MainRouter.addRoute(moduleRoute);
 }
-
-export default ModuleMonitorRouter;

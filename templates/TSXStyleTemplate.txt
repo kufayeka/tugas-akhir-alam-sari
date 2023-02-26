@@ -1,0 +1,34 @@
+import { defineComponent, ref, computed, watch, onMounted } from "vue";
+import { RouterView } from "vue-router";
+
+// Your exposed component methods
+export function _componentName_ExposedFunctions() {}
+
+export const _componentName_Component = defineComponent({
+  setup() {
+    // Define your reactive state using the "ref" function
+    const state = ref({});
+
+    // Define your computed properties using the "computed" function
+    const computedProperty = computed(() => {});
+
+    // Define your custom methods
+    function yourCustomFunction() {}
+
+    // Define a watcher using the "watch" function
+    watch(state, (newState, oldState) => {});
+
+    // Define code to run when the component is mounted using the "onMounted" function
+    onMounted(() => {});
+
+    // Define your render function using TSX syntax
+    return () => (
+      <>
+        {/* Your JSX code goes here */}
+        <div>Vue JSX/TSX Style</div>
+        {/* Your template's own RouterView  */}
+        <RouterView />
+      </>
+    );
+  },
+});

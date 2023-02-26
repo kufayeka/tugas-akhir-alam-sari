@@ -17,8 +17,8 @@ project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capa
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
-include ':capacitorjs-mqtt-bridge'
-project(':capacitorjs-mqtt-bridge').projectDir = new File('../../capacitorjs-mqtt-bridge/android')
+include ':capacitor-mqtt-native-plugin'
+project(':capacitor-mqtt-native-plugin').projectDir = new File('../node_modules/capacitor-mqtt-native-plugin/android')
 
 include ':capacitorjs-screen-plugin'
 project(':capacitorjs-screen-plugin').projectDir = new File('../../capacitorjs-screen-plugin/android')

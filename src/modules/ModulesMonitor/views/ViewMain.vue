@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { showSpinner } from "@/composables/capacitorjs-native-spinner";
-import { viewComponentLoadingScreenMethods } from "@/views/ViewComponentLoadingScreen";
 import { Card, Block, Button, Page } from "konsta/vue";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";

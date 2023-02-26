@@ -1,0 +1,25 @@
+import MainRouter from "@/router/index";
+
+export default async function init_moduleName_Router() {
+  // <!-- Imports Vue Components Dynamically -->
+  _ModuleImport_
+
+  const moduleRoutes = {
+    path: "/_moduleName_",
+    component: Parent,
+    // children: [
+    //   {
+    //     path: "child1",
+    //     component: Child1,
+    //   },
+    //   {
+    //     path: "child2",
+    //     component: Child2,
+    //   },
+    // ],
+  };
+  
+  MainRouter.addRoute(moduleRoutes);
+}
+
+init_moduleName_Router();

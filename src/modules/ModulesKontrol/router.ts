@@ -9,8 +9,6 @@ const moduleRoute = {
   name: "VIEW:KONTROL",
 };
 
-async function moduleKontrolRouter() {
+export default function () {
   MainRouter.addRoute(moduleRoute);
 }
-
-export default moduleKontrolRouter;

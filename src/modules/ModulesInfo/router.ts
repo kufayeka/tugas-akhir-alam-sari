@@ -9,8 +9,6 @@ const moduleRoute = {
   name: "VIEW:INFO",
 };
 
-async function moduleInfoRouter() {
+export default function () {
   MainRouter.addRoute(moduleRoute);
 }
-
-export default moduleInfoRouter;

@@ -14,7 +14,7 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-splash-screen')
     implementation project(':capacitor-status-bar')
-    implementation project(':capacitorjs-mqtt-bridge')
+    implementation project(':capacitor-mqtt-native-plugin')
     implementation project(':capacitorjs-screen-plugin')
     implementation project(':capacitorjs-spinner')
 
