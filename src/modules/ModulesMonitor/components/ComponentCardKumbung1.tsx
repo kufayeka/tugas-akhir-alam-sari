@@ -2,6 +2,8 @@ import { defineComponent, ref } from "vue";
 import { Button, Block, Page, Card, Preloader } from "konsta/vue";
 
 import imgBg from "../assets/image.png";
+import camIcon from "../assets/camIcon.png";
+
 import {
   styleKolomDataKimat,
   styleJudulDataKlimat,
@@ -12,8 +14,30 @@ import { useRouter } from "vue-router";
 import { showSpinner } from "@/composables/capacitorjs-native-spinner";
 import useDelay from "@/composables/use-delay";
 import { bottomNavbarVisible } from "@/composables/app-navigation-event-bus";
+import { Camera, CameraResultType } from "@capacitor/camera";
 
 export const componentCardKumbung1Methods = {};
+
+const imageSrc = ref();
+
+const takePicture = async () => {
+  const image = await Camera.getPhoto({
+    quality: 100,
+    allowEditing: false,
+    resultType: CameraResultType.Uri,
+  });
+
+  // image.webPath will contain a path that can be set as an image src.
+  // You can access the original file using image.path, which can be
+  // passed to the Filesystem API to read the raw data of the image,
+  // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+  var imageUrl = image.webPath;
+
+  console.log("pic dir:", imageUrl);
+
+  // Can be set to the src of an image now
+  imageSrc.value = imageUrl;
+};
 
 export const componentCardKumbung1DOM = defineComponent({
   setup() {
@@ -29,20 +53,37 @@ export const componentCardKumbung1DOM = defineComponent({
 
     return () => (
       <>
-        <div class={"bg-white shadow-card1 rounded-md flex flex-col z-0"}>
+        <div
+          class={"relative bg-white shadow-card1 rounded-md flex flex-col z-0"}
+        >
           <img
-            src={imgBg}
-            class={"rounded-t-md object-cover w-full h-36 z-0"}
+            src={imageSrc.value}
+            class={"rounded-t-md object-cover w-full h-44 z-0"}
           />
-          <div
-            class={
-              "absolute z-10 bg-black-overlay rounded-3xl justify-center items-center ml-2 mt-2 border border-white "
-            }
-          >
-            <p class={"text-md text-white font-bold p-1 px-2 tracking-wider"}>
-              Kumbung - 1
-            </p>
+          <div class="absolute top-2 left-0 right-0 px-2 flex justify-between items-center ">
+            <div
+              class={
+                " bg-black-overlay rounded-3xl justify-center items-center border-0.5 border-white "
+              }
+            >
+              <p class={"text-md text-white font-bold p-1 px-2 tracking-wider"}>
+                Kumbung - 1
+              </p>
+            </div>
+            <div
+              class={
+                " bg-black-overlay rounded-3xl justify-center items-center border-0.5 border-white "
+              }
+              onClick={() => takePicture()}
+            >
+              <img
+                src={camIcon}
+                class={"object-cover h-9 p-2 z-0"}
+                style={{ filter: "invert(1)" }}
+              />
+            </div>
           </div>
+
           <div
             class={
               "flex flex-row bg-white shadow-card1 p-1 justify-between z-10 px-7"

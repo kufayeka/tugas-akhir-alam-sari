@@ -9,6 +9,7 @@ import useDelay from "@/composables/use-delay";
 import { Card, Block, Button, Page } from "konsta/vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import ComponentGrafikKlimat from "../components/ComponentGrafikKlimat.vue";
 
 const router = useRouter();
 
@@ -18,10 +19,6 @@ function goBackToMonitor() {
     bottomNavbarVisible.value = true;
   });
 }
-
-const isLoading = ref(false);
-
-onBeforeMount(() => {});
 
 const { delay } = useDelay();
 const x = ref();
@@ -33,20 +30,25 @@ const pageStyle = ref({
 
 onMounted(async () => {
   await delay(0.5);
-  await setLandscape().then(async (s) => {
-    x.value = s.result;
-    if (s.result == "success") {
-      await delay(1);
+  await setLandscape()
+    .then(async (s) => {
+      x.value = s.result;
+      if (s.result == "success") {
+        await delay(1);
+        pageStyle.value.opacity = "1";
+        await hideSpinner();
+      }
+    })
+    .catch(() => {
       pageStyle.value.opacity = "1";
-      await hideSpinner();
-    }
-  });
+    });
 });
 </script>
 
 <template>
   <Page class="pb-16" :style="pageStyle">
     <p>Kumbung 1</p>
+    <!-- <ComponentGrafikKlimat /> -->
     <Button @click="goBackToMonitor()">Back</Button>
   </Page>
 </template>

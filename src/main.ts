@@ -8,6 +8,8 @@ import Application from "@/App.vue";
 import { App } from "@capacitor/app";
 import { SplashScreen } from "@capacitor/splash-screen";
 
+import VueApexCharts from "vue3-apexcharts";
+
 // Create a new instance of the Vue app
 const app = createApp(Application);
 // Create a new instance of Pinia store
@@ -28,6 +30,7 @@ const initApp = async () => {
   // Add the router and Pinia store to the Vue app
   app.use(router);
   app.use(pinia);
+  app.use(VueApexCharts);
 
   // Load LottieAnimation component asynchronously
   const LottieAnimation = () => import("lottie-web-vue");

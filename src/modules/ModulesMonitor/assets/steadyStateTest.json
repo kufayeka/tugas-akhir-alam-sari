@@ -1,0 +1,1455 @@
+{
+  "status": 200,
+  "message": "Sukses Ambil Semua Data Log Kumbung 1",
+  "data": [
+    {
+      "id": 1,
+      "temperatur": 32.9,
+      "kelembaban": 63.2,
+      "createdAt": "2022-10-17T05:48:40.000Z",
+      "updatedAt": "2022-10-17T05:48:40.000Z"
+    },
+    {
+      "id": 2,
+      "temperatur": 33,
+      "kelembaban": 63.2,
+      "createdAt": "2022-10-17T05:48:50.000Z",
+      "updatedAt": "2022-10-17T05:48:50.000Z"
+    },
+    {
+      "id": 3,
+      "temperatur": 33,
+      "kelembaban": 63.2,
+      "createdAt": "2022-10-17T05:49:00.000Z",
+      "updatedAt": "2022-10-17T05:49:00.000Z"
+    },
+    {
+      "id": 4,
+      "temperatur": 33.1,
+      "kelembaban": 63,
+      "createdAt": "2022-10-17T05:49:10.000Z",
+      "updatedAt": "2022-10-17T05:49:10.000Z"
+    },
+    {
+      "id": 5,
+      "temperatur": 33.3,
+      "kelembaban": 62.8,
+      "createdAt": "2022-10-17T05:49:20.000Z",
+      "updatedAt": "2022-10-17T05:49:20.000Z"
+    },
+    {
+      "id": 6,
+      "temperatur": 33.4,
+      "kelembaban": 62.5,
+      "createdAt": "2022-10-17T05:49:30.000Z",
+      "updatedAt": "2022-10-17T05:49:30.000Z"
+    },
+    {
+      "id": 7,
+      "temperatur": 33.7,
+      "kelembaban": 61.7,
+      "createdAt": "2022-10-17T05:49:40.000Z",
+      "updatedAt": "2022-10-17T05:49:40.000Z"
+    },
+    {
+      "id": 8,
+      "temperatur": 34.1,
+      "kelembaban": 60.7,
+      "createdAt": "2022-10-17T05:49:50.000Z",
+      "updatedAt": "2022-10-17T05:49:50.000Z"
+    },
+    {
+      "id": 9,
+      "temperatur": 34.5,
+      "kelembaban": 59.8,
+      "createdAt": "2022-10-17T05:50:00.000Z",
+      "updatedAt": "2022-10-17T05:50:00.000Z"
+    },
+    {
+      "id": 10,
+      "temperatur": 34.9,
+      "kelembaban": 59,
+      "createdAt": "2022-10-17T05:50:10.000Z",
+      "updatedAt": "2022-10-17T05:50:10.000Z"
+    },
+    {
+      "id": 11,
+      "temperatur": 35.5,
+      "kelembaban": 57.3,
+      "createdAt": "2022-10-17T05:50:20.000Z",
+      "updatedAt": "2022-10-17T05:50:20.000Z"
+    },
+    {
+      "id": 12,
+      "temperatur": 36.1,
+      "kelembaban": 56.1,
+      "createdAt": "2022-10-17T05:50:31.000Z",
+      "updatedAt": "2022-10-17T05:50:31.000Z"
+    },
+    {
+      "id": 13,
+      "temperatur": 36.6,
+      "kelembaban": 55,
+      "createdAt": "2022-10-17T05:50:40.000Z",
+      "updatedAt": "2022-10-17T05:50:40.000Z"
+    },
+    {
+      "id": 14,
+      "temperatur": 37,
+      "kelembaban": 54.1,
+      "createdAt": "2022-10-17T05:50:50.000Z",
+      "updatedAt": "2022-10-17T05:50:50.000Z"
+    },
+    {
+      "id": 15,
+      "temperatur": 37.5,
+      "kelembaban": 53,
+      "createdAt": "2022-10-17T05:51:01.000Z",
+      "updatedAt": "2022-10-17T05:51:01.000Z"
+    },
+    {
+      "id": 16,
+      "temperatur": 38,
+      "kelembaban": 51.9,
+      "createdAt": "2022-10-17T05:51:11.000Z",
+      "updatedAt": "2022-10-17T05:51:11.000Z"
+    },
+    {
+      "id": 17,
+      "temperatur": 38.6,
+      "kelembaban": 50.8,
+      "createdAt": "2022-10-17T05:51:21.000Z",
+      "updatedAt": "2022-10-17T05:51:21.000Z"
+    },
+    {
+      "id": 18,
+      "temperatur": 39,
+      "kelembaban": 49.9,
+      "createdAt": "2022-10-17T05:51:31.000Z",
+      "updatedAt": "2022-10-17T05:51:31.000Z"
+    },
+    {
+      "id": 19,
+      "temperatur": 39.5,
+      "kelembaban": 49.2,
+      "createdAt": "2022-10-17T05:51:41.000Z",
+      "updatedAt": "2022-10-17T05:51:41.000Z"
+    },
+    {
+      "id": 20,
+      "temperatur": 39.9,
+      "kelembaban": 48.3,
+      "createdAt": "2022-10-17T05:51:51.000Z",
+      "updatedAt": "2022-10-17T05:51:51.000Z"
+    },
+    {
+      "id": 21,
+      "temperatur": 40.4,
+      "kelembaban": 47.5,
+      "createdAt": "2022-10-17T05:52:01.000Z",
+      "updatedAt": "2022-10-17T05:52:01.000Z"
+    },
+    {
+      "id": 22,
+      "temperatur": 40.9,
+      "kelembaban": 46.8,
+      "createdAt": "2022-10-17T05:52:11.000Z",
+      "updatedAt": "2022-10-17T05:52:11.000Z"
+    },
+    {
+      "id": 23,
+      "temperatur": 41.2,
+      "kelembaban": 46.3,
+      "createdAt": "2022-10-17T05:52:21.000Z",
+      "updatedAt": "2022-10-17T05:52:21.000Z"
+    },
+    {
+      "id": 24,
+      "temperatur": 41.7,
+      "kelembaban": 45.5,
+      "createdAt": "2022-10-17T05:52:31.000Z",
+      "updatedAt": "2022-10-17T05:52:31.000Z"
+    },
+    {
+      "id": 25,
+      "temperatur": 42.1,
+      "kelembaban": 44.8,
+      "createdAt": "2022-10-17T05:52:41.000Z",
+      "updatedAt": "2022-10-17T05:52:41.000Z"
+    },
+    {
+      "id": 26,
+      "temperatur": 42.6,
+      "kelembaban": 44.1,
+      "createdAt": "2022-10-17T05:52:51.000Z",
+      "updatedAt": "2022-10-17T05:52:51.000Z"
+    },
+    {
+      "id": 27,
+      "temperatur": 42.8,
+      "kelembaban": 43.8,
+      "createdAt": "2022-10-17T05:53:01.000Z",
+      "updatedAt": "2022-10-17T05:53:01.000Z"
+    },
+    {
+      "id": 28,
+      "temperatur": 43.2,
+      "kelembaban": 43.2,
+      "createdAt": "2022-10-17T05:53:12.000Z",
+      "updatedAt": "2022-10-17T05:53:12.000Z"
+    },
+    {
+      "id": 29,
+      "temperatur": 43.6,
+      "kelembaban": 42.7,
+      "createdAt": "2022-10-17T05:53:22.000Z",
+      "updatedAt": "2022-10-17T05:53:22.000Z"
+    },
+    {
+      "id": 30,
+      "temperatur": 44.1,
+      "kelembaban": 42,
+      "createdAt": "2022-10-17T05:53:32.000Z",
+      "updatedAt": "2022-10-17T05:53:32.000Z"
+    },
+    {
+      "id": 31,
+      "temperatur": 44.4,
+      "kelembaban": 41.5,
+      "createdAt": "2022-10-17T05:53:42.000Z",
+      "updatedAt": "2022-10-17T05:53:42.000Z"
+    },
+    {
+      "id": 32,
+      "temperatur": 44.8,
+      "kelembaban": 41.1,
+      "createdAt": "2022-10-17T05:53:52.000Z",
+      "updatedAt": "2022-10-17T05:53:52.000Z"
+    },
+    {
+      "id": 33,
+      "temperatur": 45.1,
+      "kelembaban": 40.6,
+      "createdAt": "2022-10-17T05:54:02.000Z",
+      "updatedAt": "2022-10-17T05:54:02.000Z"
+    },
+    {
+      "id": 34,
+      "temperatur": 45.4,
+      "kelembaban": 40.2,
+      "createdAt": "2022-10-17T05:54:12.000Z",
+      "updatedAt": "2022-10-17T05:54:12.000Z"
+    },
+    {
+      "id": 35,
+      "temperatur": 45.6,
+      "kelembaban": 39.9,
+      "createdAt": "2022-10-17T05:54:22.000Z",
+      "updatedAt": "2022-10-17T05:54:22.000Z"
+    },
+    {
+      "id": 36,
+      "temperatur": 45.8,
+      "kelembaban": 39.6,
+      "createdAt": "2022-10-17T05:54:32.000Z",
+      "updatedAt": "2022-10-17T05:54:32.000Z"
+    },
+    {
+      "id": 37,
+      "temperatur": 46,
+      "kelembaban": 39.3,
+      "createdAt": "2022-10-17T05:54:42.000Z",
+      "updatedAt": "2022-10-17T05:54:42.000Z"
+    },
+    {
+      "id": 38,
+      "temperatur": 46.4,
+      "kelembaban": 39,
+      "createdAt": "2022-10-17T05:54:52.000Z",
+      "updatedAt": "2022-10-17T05:54:52.000Z"
+    },
+    {
+      "id": 39,
+      "temperatur": 46.7,
+      "kelembaban": 38.5,
+      "createdAt": "2022-10-17T05:55:02.000Z",
+      "updatedAt": "2022-10-17T05:55:02.000Z"
+    },
+    {
+      "id": 40,
+      "temperatur": 47,
+      "kelembaban": 38.1,
+      "createdAt": "2022-10-17T05:55:12.000Z",
+      "updatedAt": "2022-10-17T05:55:12.000Z"
+    },
+    {
+      "id": 41,
+      "temperatur": 47.3,
+      "kelembaban": 37.7,
+      "createdAt": "2022-10-17T05:55:22.000Z",
+      "updatedAt": "2022-10-17T05:55:22.000Z"
+    },
+    {
+      "id": 42,
+      "temperatur": 47.6,
+      "kelembaban": 37.4,
+      "createdAt": "2022-10-17T05:55:33.000Z",
+      "updatedAt": "2022-10-17T05:55:33.000Z"
+    },
+    {
+      "id": 43,
+      "temperatur": 47.9,
+      "kelembaban": 37.1,
+      "createdAt": "2022-10-17T05:55:43.000Z",
+      "updatedAt": "2022-10-17T05:55:43.000Z"
+    },
+    {
+      "id": 44,
+      "temperatur": 48.4,
+      "kelembaban": 36.6,
+      "createdAt": "2022-10-17T05:55:53.000Z",
+      "updatedAt": "2022-10-17T05:55:53.000Z"
+    },
+    {
+      "id": 45,
+      "temperatur": 48.6,
+      "kelembaban": 36.4,
+      "createdAt": "2022-10-17T05:56:03.000Z",
+      "updatedAt": "2022-10-17T05:56:03.000Z"
+    },
+    {
+      "id": 46,
+      "temperatur": 49,
+      "kelembaban": 36,
+      "createdAt": "2022-10-17T05:56:13.000Z",
+      "updatedAt": "2022-10-17T05:56:13.000Z"
+    },
+    {
+      "id": 47,
+      "temperatur": 49.2,
+      "kelembaban": 35.8,
+      "createdAt": "2022-10-17T05:56:23.000Z",
+      "updatedAt": "2022-10-17T05:56:23.000Z"
+    },
+    {
+      "id": 48,
+      "temperatur": 49.5,
+      "kelembaban": 35.5,
+      "createdAt": "2022-10-17T05:56:33.000Z",
+      "updatedAt": "2022-10-17T05:56:33.000Z"
+    },
+    {
+      "id": 49,
+      "temperatur": 49.7,
+      "kelembaban": 35.3,
+      "createdAt": "2022-10-17T05:56:43.000Z",
+      "updatedAt": "2022-10-17T05:56:43.000Z"
+    },
+    {
+      "id": 50,
+      "temperatur": 50,
+      "kelembaban": 35,
+      "createdAt": "2022-10-17T05:56:53.000Z",
+      "updatedAt": "2022-10-17T05:56:53.000Z"
+    },
+    {
+      "id": 51,
+      "temperatur": 50.1,
+      "kelembaban": 34.7,
+      "createdAt": "2022-10-17T05:57:03.000Z",
+      "updatedAt": "2022-10-17T05:57:03.000Z"
+    },
+    {
+      "id": 52,
+      "temperatur": 50.2,
+      "kelembaban": 34.7,
+      "createdAt": "2022-10-17T05:57:13.000Z",
+      "updatedAt": "2022-10-17T05:57:13.000Z"
+    },
+    {
+      "id": 53,
+      "temperatur": 50.3,
+      "kelembaban": 34.6,
+      "createdAt": "2022-10-17T05:57:23.000Z",
+      "updatedAt": "2022-10-17T05:57:23.000Z"
+    },
+    {
+      "id": 54,
+      "temperatur": 50.3,
+      "kelembaban": 34.5,
+      "createdAt": "2022-10-17T05:57:34.000Z",
+      "updatedAt": "2022-10-17T05:57:34.000Z"
+    },
+    {
+      "id": 55,
+      "temperatur": 50.4,
+      "kelembaban": 34.5,
+      "createdAt": "2022-10-17T05:57:44.000Z",
+      "updatedAt": "2022-10-17T05:57:44.000Z"
+    },
+    {
+      "id": 56,
+      "temperatur": 50.4,
+      "kelembaban": 34.5,
+      "createdAt": "2022-10-17T05:57:53.000Z",
+      "updatedAt": "2022-10-17T05:57:53.000Z"
+    },
+    {
+      "id": 57,
+      "temperatur": 50.6,
+      "kelembaban": 34.3,
+      "createdAt": "2022-10-17T05:58:04.000Z",
+      "updatedAt": "2022-10-17T05:58:04.000Z"
+    },
+    {
+      "id": 58,
+      "temperatur": 50.8,
+      "kelembaban": 34.1,
+      "createdAt": "2022-10-17T05:58:14.000Z",
+      "updatedAt": "2022-10-17T05:58:14.000Z"
+    },
+    {
+      "id": 59,
+      "temperatur": 51,
+      "kelembaban": 34,
+      "createdAt": "2022-10-17T05:58:24.000Z",
+      "updatedAt": "2022-10-17T05:58:24.000Z"
+    },
+    {
+      "id": 60,
+      "temperatur": 51.1,
+      "kelembaban": 33.9,
+      "createdAt": "2022-10-17T05:58:34.000Z",
+      "updatedAt": "2022-10-17T05:58:34.000Z"
+    },
+    {
+      "id": 61,
+      "temperatur": 51.2,
+      "kelembaban": 33.8,
+      "createdAt": "2022-10-17T05:58:44.000Z",
+      "updatedAt": "2022-10-17T05:58:44.000Z"
+    },
+    {
+      "id": 62,
+      "temperatur": 51.4,
+      "kelembaban": 33.6,
+      "createdAt": "2022-10-17T05:58:54.000Z",
+      "updatedAt": "2022-10-17T05:58:54.000Z"
+    },
+    {
+      "id": 63,
+      "temperatur": 51.4,
+      "kelembaban": 33.5,
+      "createdAt": "2022-10-17T05:59:04.000Z",
+      "updatedAt": "2022-10-17T05:59:04.000Z"
+    },
+    {
+      "id": 64,
+      "temperatur": 51.5,
+      "kelembaban": 33.5,
+      "createdAt": "2022-10-17T05:59:14.000Z",
+      "updatedAt": "2022-10-17T05:59:14.000Z"
+    },
+    {
+      "id": 65,
+      "temperatur": 51.5,
+      "kelembaban": 33.4,
+      "createdAt": "2022-10-17T05:59:24.000Z",
+      "updatedAt": "2022-10-17T05:59:24.000Z"
+    },
+    {
+      "id": 66,
+      "temperatur": 51.8,
+      "kelembaban": 33.3,
+      "createdAt": "2022-10-17T05:59:35.000Z",
+      "updatedAt": "2022-10-17T05:59:35.000Z"
+    },
+    {
+      "id": 67,
+      "temperatur": 52,
+      "kelembaban": 33.1,
+      "createdAt": "2022-10-17T05:59:44.000Z",
+      "updatedAt": "2022-10-17T05:59:44.000Z"
+    },
+    {
+      "id": 68,
+      "temperatur": 52.1,
+      "kelembaban": 32.9,
+      "createdAt": "2022-10-17T05:59:54.000Z",
+      "updatedAt": "2022-10-17T05:59:54.000Z"
+    },
+    {
+      "id": 69,
+      "temperatur": 52.1,
+      "kelembaban": 32.8,
+      "createdAt": "2022-10-17T06:00:04.000Z",
+      "updatedAt": "2022-10-17T06:00:04.000Z"
+    },
+    {
+      "id": 70,
+      "temperatur": 52.3,
+      "kelembaban": 32.8,
+      "createdAt": "2022-10-17T06:00:14.000Z",
+      "updatedAt": "2022-10-17T06:00:14.000Z"
+    },
+    {
+      "id": 71,
+      "temperatur": 52.3,
+      "kelembaban": 32.7,
+      "createdAt": "2022-10-17T06:00:24.000Z",
+      "updatedAt": "2022-10-17T06:00:24.000Z"
+    },
+    {
+      "id": 72,
+      "temperatur": 52.4,
+      "kelembaban": 32.6,
+      "createdAt": "2022-10-17T06:00:35.000Z",
+      "updatedAt": "2022-10-17T06:00:35.000Z"
+    },
+    {
+      "id": 73,
+      "temperatur": 52.6,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:00:45.000Z",
+      "updatedAt": "2022-10-17T06:00:45.000Z"
+    },
+    {
+      "id": 74,
+      "temperatur": 52.7,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:00:55.000Z",
+      "updatedAt": "2022-10-17T06:00:55.000Z"
+    },
+    {
+      "id": 75,
+      "temperatur": 52.7,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:01:05.000Z",
+      "updatedAt": "2022-10-17T06:01:05.000Z"
+    },
+    {
+      "id": 76,
+      "temperatur": 52.6,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:01:15.000Z",
+      "updatedAt": "2022-10-17T06:01:15.000Z"
+    },
+    {
+      "id": 77,
+      "temperatur": 52.6,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:01:25.000Z",
+      "updatedAt": "2022-10-17T06:01:25.000Z"
+    },
+    {
+      "id": 78,
+      "temperatur": 52.5,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:01:35.000Z",
+      "updatedAt": "2022-10-17T06:01:35.000Z"
+    },
+    {
+      "id": 79,
+      "temperatur": 52.5,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:01:45.000Z",
+      "updatedAt": "2022-10-17T06:01:45.000Z"
+    },
+    {
+      "id": 80,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:01:55.000Z",
+      "updatedAt": "2022-10-17T06:01:55.000Z"
+    },
+    {
+      "id": 81,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:02:05.000Z",
+      "updatedAt": "2022-10-17T06:02:05.000Z"
+    },
+    {
+      "id": 82,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:02:15.000Z",
+      "updatedAt": "2022-10-17T06:02:15.000Z"
+    },
+    {
+      "id": 83,
+      "temperatur": 52.5,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:02:25.000Z",
+      "updatedAt": "2022-10-17T06:02:25.000Z"
+    },
+    {
+      "id": 84,
+      "temperatur": 52.5,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:02:36.000Z",
+      "updatedAt": "2022-10-17T06:02:36.000Z"
+    },
+    {
+      "id": 85,
+      "temperatur": 52.5,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:02:45.000Z",
+      "updatedAt": "2022-10-17T06:02:45.000Z"
+    },
+    {
+      "id": 86,
+      "temperatur": 52.5,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:02:56.000Z",
+      "updatedAt": "2022-10-17T06:02:56.000Z"
+    },
+    {
+      "id": 87,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:03:06.000Z",
+      "updatedAt": "2022-10-17T06:03:06.000Z"
+    },
+    {
+      "id": 88,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:03:16.000Z",
+      "updatedAt": "2022-10-17T06:03:16.000Z"
+    },
+    {
+      "id": 89,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:03:26.000Z",
+      "updatedAt": "2022-10-17T06:03:26.000Z"
+    },
+    {
+      "id": 90,
+      "temperatur": 52.3,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:03:36.000Z",
+      "updatedAt": "2022-10-17T06:03:36.000Z"
+    },
+    {
+      "id": 91,
+      "temperatur": 52.4,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:03:46.000Z",
+      "updatedAt": "2022-10-17T06:03:46.000Z"
+    },
+    {
+      "id": 92,
+      "temperatur": 52.4,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:03:56.000Z",
+      "updatedAt": "2022-10-17T06:03:56.000Z"
+    },
+    {
+      "id": 93,
+      "temperatur": 52.6,
+      "kelembaban": 32.3,
+      "createdAt": "2022-10-17T06:04:06.000Z",
+      "updatedAt": "2022-10-17T06:04:06.000Z"
+    },
+    {
+      "id": 94,
+      "temperatur": 52.7,
+      "kelembaban": 32.2,
+      "createdAt": "2022-10-17T06:04:16.000Z",
+      "updatedAt": "2022-10-17T06:04:16.000Z"
+    },
+    {
+      "id": 95,
+      "temperatur": 52.8,
+      "kelembaban": 32.1,
+      "createdAt": "2022-10-17T06:04:26.000Z",
+      "updatedAt": "2022-10-17T06:04:26.000Z"
+    },
+    {
+      "id": 96,
+      "temperatur": 53,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:04:37.000Z",
+      "updatedAt": "2022-10-17T06:04:37.000Z"
+    },
+    {
+      "id": 97,
+      "temperatur": 53,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:04:46.000Z",
+      "updatedAt": "2022-10-17T06:04:46.000Z"
+    },
+    {
+      "id": 98,
+      "temperatur": 52.9,
+      "kelembaban": 32.1,
+      "createdAt": "2022-10-17T06:04:56.000Z",
+      "updatedAt": "2022-10-17T06:04:56.000Z"
+    },
+    {
+      "id": 99,
+      "temperatur": 52.8,
+      "kelembaban": 32.2,
+      "createdAt": "2022-10-17T06:05:06.000Z",
+      "updatedAt": "2022-10-17T06:05:06.000Z"
+    },
+    {
+      "id": 100,
+      "temperatur": 52.7,
+      "kelembaban": 32.2,
+      "createdAt": "2022-10-17T06:05:17.000Z",
+      "updatedAt": "2022-10-17T06:05:17.000Z"
+    },
+    {
+      "id": 101,
+      "temperatur": 52.6,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:05:27.000Z",
+      "updatedAt": "2022-10-17T06:05:27.000Z"
+    },
+    {
+      "id": 102,
+      "temperatur": 52.6,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:05:37.000Z",
+      "updatedAt": "2022-10-17T06:05:37.000Z"
+    },
+    {
+      "id": 103,
+      "temperatur": 52.7,
+      "kelembaban": 32.4,
+      "createdAt": "2022-10-17T06:05:47.000Z",
+      "updatedAt": "2022-10-17T06:05:47.000Z"
+    },
+    {
+      "id": 104,
+      "temperatur": 52.8,
+      "kelembaban": 32.2,
+      "createdAt": "2022-10-17T06:05:57.000Z",
+      "updatedAt": "2022-10-17T06:05:57.000Z"
+    },
+    {
+      "id": 105,
+      "temperatur": 52.9,
+      "kelembaban": 32.1,
+      "createdAt": "2022-10-17T06:06:07.000Z",
+      "updatedAt": "2022-10-17T06:06:07.000Z"
+    },
+    {
+      "id": 106,
+      "temperatur": 53,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:06:17.000Z",
+      "updatedAt": "2022-10-17T06:06:17.000Z"
+    },
+    {
+      "id": 107,
+      "temperatur": 53.2,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:06:27.000Z",
+      "updatedAt": "2022-10-17T06:06:27.000Z"
+    },
+    {
+      "id": 108,
+      "temperatur": 53.3,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:06:37.000Z",
+      "updatedAt": "2022-10-17T06:06:37.000Z"
+    },
+    {
+      "id": 109,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:06:47.000Z",
+      "updatedAt": "2022-10-17T06:06:47.000Z"
+    },
+    {
+      "id": 110,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:06:57.000Z",
+      "updatedAt": "2022-10-17T06:06:57.000Z"
+    },
+    {
+      "id": 111,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:07:07.000Z",
+      "updatedAt": "2022-10-17T06:07:07.000Z"
+    },
+    {
+      "id": 112,
+      "temperatur": 53.5,
+      "kelembaban": 31.6,
+      "createdAt": "2022-10-17T06:07:17.000Z",
+      "updatedAt": "2022-10-17T06:07:17.000Z"
+    },
+    {
+      "id": 113,
+      "temperatur": 53.6,
+      "kelembaban": 31.5,
+      "createdAt": "2022-10-17T06:07:27.000Z",
+      "updatedAt": "2022-10-17T06:07:27.000Z"
+    },
+    {
+      "id": 114,
+      "temperatur": 53.7,
+      "kelembaban": 31.4,
+      "createdAt": "2022-10-17T06:07:38.000Z",
+      "updatedAt": "2022-10-17T06:07:38.000Z"
+    },
+    {
+      "id": 115,
+      "temperatur": 53.7,
+      "kelembaban": 31.4,
+      "createdAt": "2022-10-17T06:07:48.000Z",
+      "updatedAt": "2022-10-17T06:07:48.000Z"
+    },
+    {
+      "id": 116,
+      "temperatur": 53.6,
+      "kelembaban": 31.5,
+      "createdAt": "2022-10-17T06:07:58.000Z",
+      "updatedAt": "2022-10-17T06:07:58.000Z"
+    },
+    {
+      "id": 117,
+      "temperatur": 53.5,
+      "kelembaban": 31.5,
+      "createdAt": "2022-10-17T06:08:08.000Z",
+      "updatedAt": "2022-10-17T06:08:08.000Z"
+    },
+    {
+      "id": 118,
+      "temperatur": 53.4,
+      "kelembaban": 31.6,
+      "createdAt": "2022-10-17T06:08:18.000Z",
+      "updatedAt": "2022-10-17T06:08:18.000Z"
+    },
+    {
+      "id": 119,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:08:28.000Z",
+      "updatedAt": "2022-10-17T06:08:28.000Z"
+    },
+    {
+      "id": 120,
+      "temperatur": 53.2,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:08:38.000Z",
+      "updatedAt": "2022-10-17T06:08:38.000Z"
+    },
+    {
+      "id": 121,
+      "temperatur": 53.1,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:08:48.000Z",
+      "updatedAt": "2022-10-17T06:08:48.000Z"
+    },
+    {
+      "id": 122,
+      "temperatur": 53.2,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:08:58.000Z",
+      "updatedAt": "2022-10-17T06:08:58.000Z"
+    },
+    {
+      "id": 123,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:09:08.000Z",
+      "updatedAt": "2022-10-17T06:09:08.000Z"
+    },
+    {
+      "id": 124,
+      "temperatur": 53.3,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:09:18.000Z",
+      "updatedAt": "2022-10-17T06:09:18.000Z"
+    },
+    {
+      "id": 125,
+      "temperatur": 53.3,
+      "kelembaban": 31.6,
+      "createdAt": "2022-10-17T06:09:28.000Z",
+      "updatedAt": "2022-10-17T06:09:28.000Z"
+    },
+    {
+      "id": 126,
+      "temperatur": 53.4,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:09:39.000Z",
+      "updatedAt": "2022-10-17T06:09:39.000Z"
+    },
+    {
+      "id": 127,
+      "temperatur": 53.3,
+      "kelembaban": 31.6,
+      "createdAt": "2022-10-17T06:09:49.000Z",
+      "updatedAt": "2022-10-17T06:09:49.000Z"
+    },
+    {
+      "id": 128,
+      "temperatur": 53.2,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:09:59.000Z",
+      "updatedAt": "2022-10-17T06:09:59.000Z"
+    },
+    {
+      "id": 129,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:10:09.000Z",
+      "updatedAt": "2022-10-17T06:10:09.000Z"
+    },
+    {
+      "id": 130,
+      "temperatur": 53,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:10:19.000Z",
+      "updatedAt": "2022-10-17T06:10:19.000Z"
+    },
+    {
+      "id": 131,
+      "temperatur": 53,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:10:29.000Z",
+      "updatedAt": "2022-10-17T06:10:29.000Z"
+    },
+    {
+      "id": 132,
+      "temperatur": 52.9,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:10:39.000Z",
+      "updatedAt": "2022-10-17T06:10:39.000Z"
+    },
+    {
+      "id": 133,
+      "temperatur": 53,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:10:49.000Z",
+      "updatedAt": "2022-10-17T06:10:49.000Z"
+    },
+    {
+      "id": 134,
+      "temperatur": 53,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:10:59.000Z",
+      "updatedAt": "2022-10-17T06:10:59.000Z"
+    },
+    {
+      "id": 135,
+      "temperatur": 52.9,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:11:09.000Z",
+      "updatedAt": "2022-10-17T06:11:09.000Z"
+    },
+    {
+      "id": 136,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:11:19.000Z",
+      "updatedAt": "2022-10-17T06:11:19.000Z"
+    },
+    {
+      "id": 137,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:11:29.000Z",
+      "updatedAt": "2022-10-17T06:11:29.000Z"
+    },
+    {
+      "id": 138,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:11:40.000Z",
+      "updatedAt": "2022-10-17T06:11:40.000Z"
+    },
+    {
+      "id": 139,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:11:49.000Z",
+      "updatedAt": "2022-10-17T06:11:49.000Z"
+    },
+    {
+      "id": 140,
+      "temperatur": 52.7,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:11:59.000Z",
+      "updatedAt": "2022-10-17T06:11:59.000Z"
+    },
+    {
+      "id": 141,
+      "temperatur": 52.8,
+      "kelembaban": 32.1,
+      "createdAt": "2022-10-17T06:12:10.000Z",
+      "updatedAt": "2022-10-17T06:12:10.000Z"
+    },
+    {
+      "id": 142,
+      "temperatur": 52.8,
+      "kelembaban": 32.1,
+      "createdAt": "2022-10-17T06:12:20.000Z",
+      "updatedAt": "2022-10-17T06:12:20.000Z"
+    },
+    {
+      "id": 143,
+      "temperatur": 52.9,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:12:30.000Z",
+      "updatedAt": "2022-10-17T06:12:30.000Z"
+    },
+    {
+      "id": 144,
+      "temperatur": 52.9,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:12:40.000Z",
+      "updatedAt": "2022-10-17T06:12:40.000Z"
+    },
+    {
+      "id": 145,
+      "temperatur": 52.9,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:12:50.000Z",
+      "updatedAt": "2022-10-17T06:12:50.000Z"
+    },
+    {
+      "id": 146,
+      "temperatur": 52.9,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:13:00.000Z",
+      "updatedAt": "2022-10-17T06:13:00.000Z"
+    },
+    {
+      "id": 147,
+      "temperatur": 52.9,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:13:10.000Z",
+      "updatedAt": "2022-10-17T06:13:10.000Z"
+    },
+    {
+      "id": 148,
+      "temperatur": 53,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:13:20.000Z",
+      "updatedAt": "2022-10-17T06:13:20.000Z"
+    },
+    {
+      "id": 149,
+      "temperatur": 53.1,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:13:30.000Z",
+      "updatedAt": "2022-10-17T06:13:30.000Z"
+    },
+    {
+      "id": 150,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:13:40.000Z",
+      "updatedAt": "2022-10-17T06:13:40.000Z"
+    },
+    {
+      "id": 151,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:13:50.000Z",
+      "updatedAt": "2022-10-17T06:13:50.000Z"
+    },
+    {
+      "id": 152,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:14:00.000Z",
+      "updatedAt": "2022-10-17T06:14:00.000Z"
+    },
+    {
+      "id": 153,
+      "temperatur": 53.2,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:14:10.000Z",
+      "updatedAt": "2022-10-17T06:14:10.000Z"
+    },
+    {
+      "id": 154,
+      "temperatur": 53.2,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:14:20.000Z",
+      "updatedAt": "2022-10-17T06:14:20.000Z"
+    },
+    {
+      "id": 155,
+      "temperatur": 53.2,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:14:31.000Z",
+      "updatedAt": "2022-10-17T06:14:31.000Z"
+    },
+    {
+      "id": 156,
+      "temperatur": 53.2,
+      "kelembaban": 31.7,
+      "createdAt": "2022-10-17T06:14:41.000Z",
+      "updatedAt": "2022-10-17T06:14:41.000Z"
+    },
+    {
+      "id": 157,
+      "temperatur": 53.2,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:14:51.000Z",
+      "updatedAt": "2022-10-17T06:14:51.000Z"
+    },
+    {
+      "id": 158,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:15:01.000Z",
+      "updatedAt": "2022-10-17T06:15:01.000Z"
+    },
+    {
+      "id": 159,
+      "temperatur": 53.1,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:15:11.000Z",
+      "updatedAt": "2022-10-17T06:15:11.000Z"
+    },
+    {
+      "id": 160,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:15:21.000Z",
+      "updatedAt": "2022-10-17T06:15:21.000Z"
+    },
+    {
+      "id": 161,
+      "temperatur": 53.1,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:15:31.000Z",
+      "updatedAt": "2022-10-17T06:15:31.000Z"
+    },
+    {
+      "id": 162,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:15:41.000Z",
+      "updatedAt": "2022-10-17T06:15:41.000Z"
+    },
+    {
+      "id": 163,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:15:51.000Z",
+      "updatedAt": "2022-10-17T06:15:51.000Z"
+    },
+    {
+      "id": 164,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:16:01.000Z",
+      "updatedAt": "2022-10-17T06:16:01.000Z"
+    },
+    {
+      "id": 165,
+      "temperatur": 53,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:16:11.000Z",
+      "updatedAt": "2022-10-17T06:16:11.000Z"
+    },
+    {
+      "id": 166,
+      "temperatur": 52.9,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:16:21.000Z",
+      "updatedAt": "2022-10-17T06:16:21.000Z"
+    },
+    {
+      "id": 167,
+      "temperatur": 52.9,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:16:31.000Z",
+      "updatedAt": "2022-10-17T06:16:31.000Z"
+    },
+    {
+      "id": 168,
+      "temperatur": 52.8,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:16:42.000Z",
+      "updatedAt": "2022-10-17T06:16:42.000Z"
+    },
+    {
+      "id": 169,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:16:52.000Z",
+      "updatedAt": "2022-10-17T06:16:52.000Z"
+    },
+    {
+      "id": 170,
+      "temperatur": 52.8,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:17:02.000Z",
+      "updatedAt": "2022-10-17T06:17:02.000Z"
+    },
+    {
+      "id": 171,
+      "temperatur": 52.9,
+      "kelembaban": 32,
+      "createdAt": "2022-10-17T06:17:12.000Z",
+      "updatedAt": "2022-10-17T06:17:12.000Z"
+    },
+    {
+      "id": 172,
+      "temperatur": 53,
+      "kelembaban": 31.9,
+      "createdAt": "2022-10-17T06:17:22.000Z",
+      "updatedAt": "2022-10-17T06:17:22.000Z"
+    },
+    {
+      "id": 173,
+      "temperatur": 53.1,
+      "kelembaban": 31.8,
+      "createdAt": "2022-10-17T06:17:32.000Z",
+      "updatedAt": "2022-10-17T06:17:32.000Z"
+    },
+    {
+      "id": 174,
+      "temperatur": 53.2,
+      "kelembaban": 31.6,
+      "createdAt": "2022-10-17T06:17:42.000Z",
+      "updatedAt": "2022-10-17T06:17:42.000Z"
+    },
+    {
+      "id": 175,
+      "temperatur": 53.3,
+      "kelembaban": 31.5,
+      "createdAt": "2022-10-17T06:17:52.000Z",
+      "updatedAt": "2022-10-17T06:17:52.000Z"
+    },
+    {
+      "id": 176,
+      "temperatur": 53.5,
+      "kelembaban": 31.5,
+      "createdAt": "2022-10-17T06:18:02.000Z",
+      "updatedAt": "2022-10-17T06:18:02.000Z"
+    },
+    {
+      "id": 177,
+      "temperatur": 53.5,
+      "kelembaban": 31.4,
+      "createdAt": "2022-10-17T06:18:12.000Z",
+      "updatedAt": "2022-10-17T06:18:12.000Z"
+    },
+    {
+      "id": 178,
+      "temperatur": 53.6,
+      "kelembaban": 31.4,
+      "createdAt": "2022-10-17T06:18:22.000Z",
+      "updatedAt": "2022-10-17T06:18:22.000Z"
+    },
+    {
+      "id": 179,
+      "temperatur": 53.6,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:18:32.000Z",
+      "updatedAt": "2022-10-17T06:18:32.000Z"
+    },
+    {
+      "id": 180,
+      "temperatur": 53.7,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:18:43.000Z",
+      "updatedAt": "2022-10-17T06:18:43.000Z"
+    },
+    {
+      "id": 181,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:18:52.000Z",
+      "updatedAt": "2022-10-17T06:18:52.000Z"
+    },
+    {
+      "id": 182,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:19:03.000Z",
+      "updatedAt": "2022-10-17T06:19:03.000Z"
+    },
+    {
+      "id": 183,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:19:13.000Z",
+      "updatedAt": "2022-10-17T06:19:13.000Z"
+    },
+    {
+      "id": 184,
+      "temperatur": 53.6,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:19:23.000Z",
+      "updatedAt": "2022-10-17T06:19:23.000Z"
+    },
+    {
+      "id": 185,
+      "temperatur": 53.6,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:19:33.000Z",
+      "updatedAt": "2022-10-17T06:19:33.000Z"
+    },
+    {
+      "id": 186,
+      "temperatur": 53.7,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:19:43.000Z",
+      "updatedAt": "2022-10-17T06:19:43.000Z"
+    },
+    {
+      "id": 187,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:19:53.000Z",
+      "updatedAt": "2022-10-17T06:19:53.000Z"
+    },
+    {
+      "id": 188,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:04.000Z",
+      "updatedAt": "2022-10-17T06:20:04.000Z"
+    },
+    {
+      "id": 189,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:13.000Z",
+      "updatedAt": "2022-10-17T06:20:13.000Z"
+    },
+    {
+      "id": 190,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:23.000Z",
+      "updatedAt": "2022-10-17T06:20:23.000Z"
+    },
+    {
+      "id": 191,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:33.000Z",
+      "updatedAt": "2022-10-17T06:20:33.000Z"
+    },
+    {
+      "id": 192,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:43.000Z",
+      "updatedAt": "2022-10-17T06:20:43.000Z"
+    },
+    {
+      "id": 193,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:20:53.000Z",
+      "updatedAt": "2022-10-17T06:20:53.000Z"
+    },
+    {
+      "id": 194,
+      "temperatur": 53.7,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:21:03.000Z",
+      "updatedAt": "2022-10-17T06:21:03.000Z"
+    },
+    {
+      "id": 195,
+      "temperatur": 53.6,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:21:14.000Z",
+      "updatedAt": "2022-10-17T06:21:14.000Z"
+    },
+    {
+      "id": 196,
+      "temperatur": 53.6,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:21:24.000Z",
+      "updatedAt": "2022-10-17T06:21:24.000Z"
+    },
+    {
+      "id": 197,
+      "temperatur": 53.5,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:21:34.000Z",
+      "updatedAt": "2022-10-17T06:21:34.000Z"
+    },
+    {
+      "id": 198,
+      "temperatur": 53.5,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:21:44.000Z",
+      "updatedAt": "2022-10-17T06:21:44.000Z"
+    },
+    {
+      "id": 199,
+      "temperatur": 53.5,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:21:54.000Z",
+      "updatedAt": "2022-10-17T06:21:54.000Z"
+    },
+    {
+      "id": 200,
+      "temperatur": 53.4,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:22:04.000Z",
+      "updatedAt": "2022-10-17T06:22:04.000Z"
+    },
+    {
+      "id": 201,
+      "temperatur": 53.4,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:22:14.000Z",
+      "updatedAt": "2022-10-17T06:22:14.000Z"
+    },
+    {
+      "id": 202,
+      "temperatur": 53.4,
+      "kelembaban": 31.3,
+      "createdAt": "2022-10-17T06:22:24.000Z",
+      "updatedAt": "2022-10-17T06:22:24.000Z"
+    },
+    {
+      "id": 203,
+      "temperatur": 53.4,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:22:34.000Z",
+      "updatedAt": "2022-10-17T06:22:34.000Z"
+    },
+    {
+      "id": 204,
+      "temperatur": 53.4,
+      "kelembaban": 31.2,
+      "createdAt": "2022-10-17T06:22:46.000Z",
+      "updatedAt": "2022-10-17T06:22:46.000Z"
+    },
+    {
+      "id": 205,
+      "temperatur": 53.5,
+      "kelembaban": 31.1,
+      "createdAt": "2022-10-17T06:22:54.000Z",
+      "updatedAt": "2022-10-17T06:22:54.000Z"
+    },
+    {
+      "id": 206,
+      "temperatur": 53.6,
+      "kelembaban": 31,
+      "createdAt": "2022-10-17T06:23:04.000Z",
+      "updatedAt": "2022-10-17T06:23:04.000Z"
+    },
+    {
+      "id": 207,
+      "temperatur": 53.8,
+      "kelembaban": 30.8,
+      "createdAt": "2022-10-17T06:23:14.000Z",
+      "updatedAt": "2022-10-17T06:23:14.000Z"
+    }
+  ]
+}

@@ -17,6 +17,9 @@ module.exports = konstaConfig({
         "pasty-white-people": "#ffffff",
         "black-overlay": "rgba(0,0,0,0.5)",
       },
+      borderWidth: {
+        0.5: "0.3px",
+      },
       boxShadow: {
         card1:
           "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
