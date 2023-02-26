@@ -77,7 +77,11 @@ const { isSwiping, direction } = useSwipe(el);
 watch(
   [isSwiping, direction],
   ([oldSwipe, oldDirection], [newSwipe, newDirection]) => {
-    filterSwipeAction(newSwipe, newDirection);
+    // guard the swipe action when kumbung1 or 2 is still open
+    if (route.name === "kumbung1" || route.name === "kumbung2") {
+    } else {
+      filterSwipeAction(newSwipe, newDirection);
+    }
   }
 );
 
