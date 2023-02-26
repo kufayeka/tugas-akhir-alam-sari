@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { bottomNavbarVisible } from "@/composables/app-navigation-event-bus";
 import { showSpinner } from "@/composables/capacitorjs-native-spinner";
 import { Card, Block, Button, Page } from "konsta/vue";
 import { onMounted, ref } from "vue";

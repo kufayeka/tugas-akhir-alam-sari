@@ -17,6 +17,7 @@ export const arrTabView = [TabView.Monitor, TabView.Kontrol, TabView.Info];
 // Use a ref to keep track of the active tab view.
 export const arrTabViewPointer = ref(0);
 export const activeTab = ref("");
+export const bottomNavbarVisible = ref(true);
 
 // Define a function that changes the active tab
 export function goToTab(index: number) {

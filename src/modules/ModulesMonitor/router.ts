@@ -12,14 +12,17 @@ const moduleRoute = {
   children: [
     {
       path: "main",
+      name: "monitor",
       component: Main,
     },
     {
       path: "kumbung1",
+      name: "kumbung1",
       component: Kumbung1,
     },
     {
       path: "kumbung2",
+      name: "kumbung2",
       component: Kumbung2,
     },
   ],

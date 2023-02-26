@@ -23,15 +23,24 @@ import {
   appNavigationEventBus,
   arrTabView,
   arrTabViewPointer,
+  bottomNavbarVisible,
   filterSwipeAction,
 } from "@/composables/app-navigation-event-bus";
 import { useSwipe } from "@vueuse/core";
 
 // Capacitor
+import { App as CapacitorApp } from "@capacitor/app";
 import { SplashScreen } from "@capacitor/splash-screen";
 
 // Konsta
 import { App, Button } from "konsta/vue";
+import router from "./router";
+import { useRoute } from "vue-router";
+import { setPortrait } from "./composables/capacitorjs-screen-controller";
+
+import useDelay from "@/composables/use-delay";
+
+const delay = useDelay;
 
 // Async Components
 const ComponentBottomNavbar = defineAsyncComponent(
@@ -74,6 +83,21 @@ watch(
 
 appNavigationEventBus.on((x) => {
   activeTab.value = x;
+});
+
+const route = useRoute();
+
+CapacitorApp.addListener("backButton", async (x) => {
+  console.log("Back Button Pressed. canGoBack Status:", x.canGoBack);
+
+  console.log("current route:", route.name);
+
+  if (route.name === "kumbung1" || route.name === "kumbung2") {
+    setPortrait().then(() => {
+      router.push("/monitor/main");
+      bottomNavbarVisible.value = true;
+    });
+  }
 });
 
 onMounted(async () => {

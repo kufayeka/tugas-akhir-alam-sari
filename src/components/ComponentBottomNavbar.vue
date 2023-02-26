@@ -7,6 +7,7 @@ import {
   arrTabView,
   appNavigationEventBus,
   TabView,
+  bottomNavbarVisible,
 } from "@/composables/app-navigation-event-bus";
 
 // Set the first active tab to tabMonitor
@@ -17,7 +18,10 @@ appNavigationEventBus.emit(TabView.Monitor);
 </script>
 
 <template>
-  <Tabbar class="bottom-0 left-0 fixed shadow-bottomNav">
+  <Tabbar
+    class="bottom-0 left-0 fixed shadow-bottomNav"
+    v-if="bottomNavbarVisible"
+  >
     <TabbarLink :active="activeTab === arrTabView[0]" @click="goToTab(0)">
       Monitor
     </TabbarLink>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { bottomNavbarVisible } from "@/composables/app-navigation-event-bus";
 import { hideSpinner } from "@/composables/capacitorjs-native-spinner";
 import {
   setLandscape,
@@ -12,8 +13,10 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 function goBackToMonitor() {
-  router.push("/monitor/main");
-  setPortrait();
+  setPortrait().then(async () => {
+    router.push("/monitor/main");
+    bottomNavbarVisible.value = true;
+  });
 }
 
 const isLoading = ref(false);

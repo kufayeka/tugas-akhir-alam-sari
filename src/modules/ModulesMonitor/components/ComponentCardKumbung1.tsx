@@ -11,6 +11,7 @@ import {
 import { useRouter } from "vue-router";
 import { showSpinner } from "@/composables/capacitorjs-native-spinner";
 import useDelay from "@/composables/use-delay";
+import { bottomNavbarVisible } from "@/composables/app-navigation-event-bus";
 
 export const componentCardKumbung1Methods = {};
 
@@ -20,6 +21,7 @@ export const componentCardKumbung1DOM = defineComponent({
     const { delay } = useDelay();
 
     async function goToGrafikView() {
+      bottomNavbarVisible.value = false;
       showSpinner();
       await delay(1);
       router.push("/monitor/kumbung1");
