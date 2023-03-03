@@ -5,7 +5,7 @@ import {
   mqttConnect,
   mqttDisconnect,
   subscribe,
-  publish,
+  requestDatabaseRecords,
 } from "@/service/capacitorjs-mqtt-bridge";
 
 import {
@@ -40,10 +40,12 @@ mqttMessageArrivedEventListener.on((x: any) => {
   var y = {
     status: "Received a new message",
     topic: x.topic,
-    message: x.message,
+    message: JSON.parse(x.message),
   };
   incomingMessagesLog.value.push(y);
 });
+
+const limitValue = ref();
 
 const myDiv = ref();
 onMounted(() => {
@@ -64,13 +66,21 @@ onMounted(() => {
             Halaman ini menampilkan data terkini dari setiap kumbung jamur. Klik
             salah satu kumbung jamur di bawah untuk mulai memonitor.
           </p>
-          <div v-for="i in 1">
-            <div class="space-y-7">
-              <Button @click="mqttConnect()">Connect</Button>
-              <Button @click="mqttDisconnect()">Disconnect</Button>
-              <Button @click="subscribe()">Subscribe</Button>
-              <Button @click="publish()">Publish</Button>
-            </div>
+          <div class="space-y-7">
+            <Button @click="mqttConnect()">Connect</Button>
+            <Button @click="mqttDisconnect()">Disconnect</Button>
+            <Button @click="subscribe()">Subscribe</Button>
+            <input v-model="limitValue" />
+            <p>limit={{ limitValue }}</p>
+            <Button
+              @click="
+                requestDatabaseRecords({
+                  grafik_kumbung: 1,
+                  limit: Number(limitValue),
+                })
+              "
+              >Request DB</Button
+            >
           </div>
         </div>
       </Card>

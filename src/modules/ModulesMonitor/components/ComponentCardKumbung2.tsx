@@ -18,25 +18,33 @@ import { Camera, CameraResultType } from "@capacitor/camera";
 
 export const componentCardKumbung2Methods = {};
 
-const imageSrc = ref();
+const imageUrl = ref(localStorage.getItem("imageUrlKumbung2") || null);
+
+const isHovered = ref(false);
 
 const takePicture = async () => {
+  isHovered.value = true;
+
+  setTimeout(() => {
+    isHovered.value = false;
+  }, 300);
+
   const image = await Camera.getPhoto({
     quality: 100,
     allowEditing: false,
+    promptLabelHeader: "Foto Kumbung Jamur 2",
+    promptLabelPhoto: "Ambil foto dari galeri",
+    promptLabelPicture: "Ambil foto (kamera)",
     resultType: CameraResultType.Uri,
   });
 
-  // image.webPath will contain a path that can be set as an image src.
-  // You can access the original file using image.path, which can be
-  // passed to the Filesystem API to read the raw data of the image,
-  // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-  var imageUrl = image.webPath;
+  var imageUrlPath = image.webPath;
 
-  console.log("pic dir:", imageUrl);
+  // save image path to local storage
+  localStorage.setItem("imageUrlKumbung2", String(imageUrlPath));
 
-  // Can be set to the src of an image now
-  imageSrc.value = imageUrl;
+  // update image
+  imageUrl.value = localStorage.getItem("imageUrlKumbung2");
 };
 
 export const componentCardKumbung2DOM = defineComponent({
@@ -57,7 +65,7 @@ export const componentCardKumbung2DOM = defineComponent({
           class={"relative bg-white shadow-card1 rounded-md flex flex-col z-0"}
         >
           <img
-            src={imgBg}
+            src={String(imageUrl.value)}
             class={"rounded-t-md object-cover w-full h-44 z-0"}
           />
           <div class="absolute top-2 left-0 right-0 px-2 flex justify-between items-center ">
@@ -71,15 +79,17 @@ export const componentCardKumbung2DOM = defineComponent({
               </p>
             </div>
             <div
-              class={
-                " bg-black-overlay rounded-3xl justify-center items-center border-0.5 border-white"
-              }
+              class={`rounded-3xl justify-center items-center border-0.5 border-white bg-${
+                isHovered.value ? "white" : "black-overlay"
+              }`}
               onClick={() => takePicture()}
             >
               <img
                 src={camIcon}
                 class={"object-cover h-9 p-2 z-0"}
-                style={{ filter: "invert(1)" }}
+                style={{
+                  filter: isHovered.value ? "invert(0)" : "invert()",
+                }}
               />
             </div>
           </div>

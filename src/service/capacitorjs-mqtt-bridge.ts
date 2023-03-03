@@ -1,3 +1,4 @@
+import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 import { MqttBridge } from "capacitor-mqtt-native-plugin";
 
 // Set the MQTT server connection options
@@ -32,55 +33,87 @@ export const mqttDisconnect = async () =>
     });
 
 export function subscribe() {
-  const topic = "your_mqtt_topic";
-  const qos = 0;
+  const sub1 = { topic: "yekaa/testing/get_db_command", qos: 0 };
+  MqttBridge.subscribe(sub1);
 
-  MqttBridge.subscribe({ topic, qos })
-    .then((result: any) => {
-      console.log("Successfully subscribed to topic:");
-      console.log("Topic:", result.topic);
-      console.log("QoS:", result.qos);
-    })
-    .catch((errorMessage: any) => {
-      console.log("Failed to subscribe to topic. Error:", errorMessage);
-    });
+  const sub2 = { topic: "yekaa/testing/get_db_result", qos: 0 };
+  MqttBridge.subscribe(sub2);
 }
 
-export function publish() {
-  const topic = "your_mqtt_topic";
-  const payload = "test";
+export function requestDatabaseRecords(x: {
+  grafik_kumbung: number;
+  limit: number;
+}) {
+  const topic = "yekaa/testing/get_db_command";
+  const payload = JSON.stringify(x);
   const qos = 0;
-  const retained = true;
+  const retained = false;
 
-  MqttBridge.publish({ topic, payload, qos, retained })
-    .then((result: any) => {
-      console.log("Successfully published message:");
-      console.log("Topic:", result.topic);
-      console.log("QoS:", result.qos);
-      console.log("Payload:", result.payload);
-      console.log("Retained:", result.retained);
-      console.log("Message ID:", result.messageId);
-    })
-    .catch((errorMessage: any) => {
-      console.log("Failed to publish message. Error:", errorMessage);
-    });
+  MqttBridge.publish({ topic, payload, qos, retained });
 }
 
-MqttBridge.addListener("onMessageArrived", (result: any) => {
-  console.log("Received a new message:");
-  console.log("Topic:", result.topic);
-  console.log("Message:", result.message);
+mqttMessageArrivedEventListener.on((x: any) => {
+  var y = {
+    status: "Received a new message",
+    topic: x.topic,
+    message: JSON.parse(x.message),
+  };
+
+  if (y.topic == "yekaa/testing/get_db_command") {
+    const opt = y.message;
+    getDataFromDB({ grafik_kumbung: opt.grafik_kumbung, limit: opt.limit });
+  }
 });
 
-MqttBridge.addListener("onConnectComplete", (result: any) => {
-  console.log("Successfully connected to MQTT broker:");
-  console.log("Reconnected:", result.reconnected);
-  console.log("Server URI:", result.serverURI);
-});
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 
-MqttBridge.addListener("onConnectionLost", (result: any) => {
-  console.log("Connection lost:");
-  console.log("Connection status:", result.connectionStatus);
-  console.log("Reason code:", result.reasonCode);
-  console.log("Message:", result.message);
-});
+interface DataEntry {
+  temp: number;
+  hum: number;
+  ts: string;
+}
+
+interface Message {
+  message: string;
+  dataCounts: number;
+  data: DataEntry[];
+}
+
+const generateData = (limit: number): DataEntry[] => {
+  const data: DataEntry[] = [];
+  for (let i = 0; i < limit; i++) {
+    const temp = Math.floor(Math.random() * 20000) + 20;
+    const hum = Math.floor(Math.random() * 20000) + 20;
+    const date = new Date(2022, 1, i + 1);
+    const ts = date.toISOString().substring(0, 10);
+    data.push({ temp, hum, ts });
+  }
+  return data;
+};
+
+let data: DataEntry[] = generateData(20000); // generate the data when the app is launched
+
+export function getDataFromDB(x: { grafik_kumbung: number; limit: number }) {
+  // limit the number of data points to be sent to MQTT
+  const limitedData = data.slice(0, x.limit);
+
+  const message: Message = {
+    message: `this is data from kumbung: ${x.grafik_kumbung}`,
+    dataCounts: limitedData.length,
+    data: limitedData,
+  };
+
+  const topic = "yekaa/testing/get_db_result";
+  const payload = JSON.stringify(message);
+  const qos = 2;
+  const retained = false;
+
+  MqttBridge.publish({ topic, payload, qos, retained });
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
+MqttBridge.addListener("onMessageArrived", (result: any) => {});
+
+MqttBridge.addListener("onConnectComplete", (result: any) => {});
+
+MqttBridge.addListener("onConnectionLost", (result: any) => {});
