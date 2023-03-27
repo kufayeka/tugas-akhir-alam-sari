@@ -22,11 +22,11 @@ onMounted(() => {
       <div class="max-w-screen-md mx-auto pb-32">
         <h1 class="font-bold text-3xl text-md-light-primary">Kontrol</h1>
         <div class="space-y-3">
-          <p class="text-justify text-md tracking-tighter opacity-70">
+          <p class="text-justify text-md tracking-tighter opacity-80">
             Berikut adalah beberapa parameter pengaturan dari sistem kumbung
             jamur.
           </p>
-          <p class="text-justify text-md tracking-tighter opacity-70">
+          <p class="text-justify text-md tracking-tighter opacity-80">
             Untuk mengubah nilai parameter tertentu. Klik kotak yang berisi
             angka untuk mengubah nilai dan klik tombol "Simpan" untuk menyimpan
             nilai terbaru.
