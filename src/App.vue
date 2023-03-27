@@ -14,7 +14,6 @@ import {
   mqttConnect,
   mqttDisconnect,
   subscribe,
-  publish,
 } from "@/service/capacitorjs-mqtt-bridge";
 import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 

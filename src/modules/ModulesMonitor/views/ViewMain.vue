@@ -37,7 +37,7 @@ onMounted(() => {
           Halaman ini menampilkan data terkini dari setiap kumbung jamur. Klik
           salah satu kumbung jamur di bawah untuk mulai memonitor.
         </p>
-        <div v-for="i in 1" class="space-y-5 mt-7">
+        <div class="space-y-5 mt-7">
           <componentCardKumbung1DOM />
           <componentCardKumbung2DOM />
         </div>
