@@ -1,6 +1,6 @@
 <template>
-  <Button>
-    {{ props.buttonText }}
+  <Button class="">
+    <p class="tracking-tighter">{{ props.buttonText }}</p>
   </Button>
 </template>
 

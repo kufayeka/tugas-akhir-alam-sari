@@ -11,14 +11,18 @@ onMounted(() => {});
 
 <template>
   <div class="relative bg-white shadow-card2 rounded-md flex flex-col z-0">
-    <p class="font-bold text-md text-md-light-primary ml-3 mt-3">
+    <p
+      class="font-bold text-md text-md-light-primary ml-3 mt-3 tracking-tighter"
+    >
       Parameter Kontrol PID
     </p>
 
     <table class="w-full mt-3">
       <tbody>
         <tr>
-          <td class="text-right font-semibold text-md text-black pr-4">
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
             Proporsional:
           </td>
           <td class="flex justify-center">
@@ -26,7 +30,9 @@ onMounted(() => {});
           </td>
         </tr>
         <tr>
-          <td class="text-right font-semibold text-md text-black pr-4">
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
             Integral:
           </td>
           <td class="flex justify-center">
@@ -34,7 +40,9 @@ onMounted(() => {});
           </td>
         </tr>
         <tr>
-          <td class="text-right font-semibold text-md text-black pr-4">
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
             Derivatif:
           </td>
           <td class="flex justify-center">

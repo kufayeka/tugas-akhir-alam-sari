@@ -11,27 +11,41 @@ onMounted(() => {});
 
 <template>
   <div class="relative bg-white shadow-card2 rounded-md flex flex-col z-0">
-    <p class="font-bold text-md text-md-light-primary ml-3 mt-3">
+    <p
+      class="font-bold text-md text-md-light-primary ml-3 mt-3 tracking-tighter"
+    >
       Selang Waktu ON & OFF Maksimal Sprinkler
     </p>
 
     <table class="w-full mt-3">
       <tbody>
         <tr>
-          <td class="text-right font-semibold text-md text-black pr-4">ON:</td>
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
+            ON:
+          </td>
           <td class="flex justify-center">
             <ComponentReuseableInputField v-model="inputValue" class="w-24" />
           </td>
-          <td class="text-right font-semibold text-md text-black pr-4">
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
             Menit
           </td>
         </tr>
         <tr>
-          <td class="text-right font-semibold text-md text-black pr-4">OFF:</td>
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
+            OFF:
+          </td>
           <td class="flex justify-center">
             <ComponentReuseableInputField v-model="inputValue" class="w-24" />
           </td>
-          <td class="text-right font-semibold text-md text-black pr-4">
+          <td
+            class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-70"
+          >
             Menit
           </td>
         </tr>
