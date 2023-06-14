@@ -1,5 +1,6 @@
 import { defineComponent, ref } from "vue";
 import { Button, Block, Page, Card, Preloader } from "konsta/vue";
+import dayjs from "dayjs";
 
 import imgBg from "../assets/image.png";
 import camIcon from "../assets/camIcon.png";
@@ -15,6 +16,8 @@ import { showSpinner } from "@/composables/capacitorjs-native-spinner";
 import useDelay from "@/composables/use-delay";
 import { bottomNavbarVisible } from "@/composables/app-navigation-event-bus";
 import { Camera, CameraResultType } from "@capacitor/camera";
+import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+import { realtimeDataMQTTTopic } from "@/service/capacitorjs-mqtt-bridge";
 
 export const componentCardKumbung1Methods = {};
 
@@ -46,6 +49,31 @@ const takePicture = async () => {
   // update image
   imageUrl.value = localStorage.getItem("imageUrlKumbung1");
 };
+
+const msg = ref();
+const sensor1Temperature = ref(0);
+const sensor1Humidity = ref(0);
+const sensor2Temperature = ref(0);
+const sensor2Humidity = ref(0);
+const timestamp = ref("");
+
+mqttMessageArrivedEventListener.on((x: any) => {
+  var topic = x.topic;
+  var message = x.message;
+
+  if (topic == realtimeDataMQTTTopic) {
+    var readings = JSON.parse(message);
+    sensor1Temperature.value = parseFloat(
+      readings.sensor1.temperature.toFixed(2)
+    );
+    sensor1Humidity.value = parseFloat(readings.sensor1.humidity.toFixed(2));
+    sensor2Temperature.value = parseFloat(
+      readings.sensor2.temperature.toFixed(2)
+    );
+    sensor2Humidity.value = parseFloat(readings.sensor2.humidity.toFixed(2));
+    timestamp.value = dayjs(readings.timestamp).format("YYYY-MM-DD HH:mm:ss");
+  }
+});
 
 export const componentCardKumbung1DOM = defineComponent({
   setup() {
@@ -101,11 +129,11 @@ export const componentCardKumbung1DOM = defineComponent({
           >
             <div class={styleKolomDataKimat}>
               <p class={styleJudulDataKlimat}>Kelembaban</p>
-              <p class={styleValueDataKlimat}>70 %</p>
+              <p class={styleValueDataKlimat}>{sensor1Humidity.value} %</p>
             </div>
             <div class={styleKolomDataKimat}>
               <p class={styleJudulDataKlimat}>Suhu</p>
-              <p class={styleValueDataKlimat}>25 C</p>
+              <p class={styleValueDataKlimat}>{sensor1Temperature.value} C</p>
             </div>
             <div class={styleKolomDataKimat}>
               <p class={styleJudulDataKlimat}>Sprinkler</p>
@@ -117,11 +145,10 @@ export const componentCardKumbung1DOM = defineComponent({
               "flex flex-row bg-white shadow-md p-3 justify-between rounded-b-md z-0"
             }
           >
-            <Button
-              class={"tracking-tighter "}
-              onClick={() => goToGrafikView()}
-            >
-              Lihat Grafik Klimat
+            <Button class={"tracking-tighter "}>
+              <p onClick={() => goToGrafikView()} class={"w-full"}>
+                Lihat Grafik Klimat
+              </p>
             </Button>
           </div>
         </div>

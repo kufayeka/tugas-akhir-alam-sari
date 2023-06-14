@@ -24,6 +24,7 @@
     "capacitor-mqtt-native-plugin": "^1.0.5",
     "capacitorjs-screen-plugin": "file:../capacitorjs-screen-plugin",
     "capacitorjs-spinner": "file:../capacitorjs-spinner",
+    "dayjs": "^1.11.8",
     "echarts": "^5.4.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",

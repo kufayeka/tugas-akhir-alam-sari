@@ -17,7 +17,7 @@ onMounted(() => {});
       Selang Waktu ON & OFF Maksimal Sprinkler
     </p>
 
-    <table class="w-full mt-3">
+    <table class="w-full mt-7">
       <tbody>
         <tr>
           <td

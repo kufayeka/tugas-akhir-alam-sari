@@ -1,13 +1,27 @@
 import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 import { MqttBridge } from "capacitor-mqtt-native-plugin";
 
+// Generate a random clientID
+function generateRandomClientId(length: number) {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const charactersLength = characters.length;
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
+
 // Set the MQTT server connection options
 const connectOptions = {
-  serverURI: "tcp://broker.hivemq.com",
+  serverURI: "tcp://203.189.122.131",
   port: 1883,
   clientId: "",
-  username: "",
-  password: "",
+  username: "petra_mqtt_broker",
+  password: "petraMqttBroker777",
   setCleanSession: true,
   connectionTimeout: 10,
   keepAliveInterval: 60,
@@ -18,6 +32,7 @@ export const mqttConnect = async () =>
   MqttBridge.connect(connectOptions)
     .then(() => {
       console.log("Connect Success");
+      subscribeToTopics();
     })
     .catch((errorMessage: string) => {
       console.log("Connect Failed:", errorMessage);
@@ -32,86 +47,33 @@ export const mqttDisconnect = async () =>
       console.log("Disconnect Failed:", errorMessage);
     });
 
-export function subscribe() {
-  const sub1 = { topic: "yekaa/testing/get_db_command", qos: 0 };
-  MqttBridge.subscribe(sub1);
+export const realtimeDataMQTTTopic =
+  "petra/alamsari/kumbung_jamur/real_time/climate";
+export const dataLoggerMQTTTopic =
+  "petra/alamsari/kumbung_jamur/data_logger/climate";
+export const parameterSettingMQTTTopic =
+  "petra/alamsari/kumbung_jamur/setting/all_parameters";
 
-  const sub2 = { topic: "yekaa/testing/get_db_result", qos: 0 };
-  MqttBridge.subscribe(sub2);
-}
-
-export function requestDatabaseRecords(x: {
-  grafik_kumbung: number;
-  limit: number;
-}) {
-  const topic = "yekaa/testing/get_db_command";
-  const payload = JSON.stringify(x);
-  const qos = 0;
-  const retained = false;
-
-  MqttBridge.publish({ topic, payload, qos, retained });
-}
-
-mqttMessageArrivedEventListener.on((x: any) => {
-  var y = {
-    status: "Received a new message",
-    topic: x.topic,
-    message: JSON.parse(x.message),
+export function subscribeToTopics() {
+  const realtimeDataTopic = {
+    topic: realtimeDataMQTTTopic,
+    qos: 1,
   };
+  MqttBridge.subscribe(realtimeDataTopic);
 
-  if (y.topic == "yekaa/testing/get_db_command") {
-    const opt = y.message;
-    getDataFromDB({ grafik_kumbung: opt.grafik_kumbung, limit: opt.limit });
-  }
-});
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
-
-interface DataEntry {
-  temp: number;
-  hum: number;
-  ts: string;
-}
-
-interface Message {
-  message: string;
-  dataCounts: number;
-  data: DataEntry[];
-}
-
-const generateData = (limit: number): DataEntry[] => {
-  const data: DataEntry[] = [];
-  for (let i = 0; i < limit; i++) {
-    const temp = Math.floor(Math.random() * 20000) + 20;
-    const hum = Math.floor(Math.random() * 20000) + 20;
-    const date = new Date(2022, 1, i + 1);
-    const ts = date.toISOString().substring(0, 10);
-    data.push({ temp, hum, ts });
-  }
-  return data;
-};
-
-let data: DataEntry[] = generateData(20000); // generate the data when the app is launched
-
-export function getDataFromDB(x: { grafik_kumbung: number; limit: number }) {
-  // limit the number of data points to be sent to MQTT
-  const limitedData = data.slice(0, x.limit);
-
-  const message: Message = {
-    message: `this is data from kumbung: ${x.grafik_kumbung}`,
-    dataCounts: limitedData.length,
-    data: limitedData,
+  const dataLoggerTopic = {
+    topic: dataLoggerMQTTTopic,
+    qos: 1,
   };
+  MqttBridge.subscribe(dataLoggerTopic);
 
-  const topic = "yekaa/testing/get_db_result";
-  const payload = JSON.stringify(message);
-  const qos = 2;
-  const retained = false;
-
-  MqttBridge.publish({ topic, payload, qos, retained });
+  const parameterSettingTopic = {
+    topic: parameterSettingMQTTTopic,
+    qos: 1,
+  };
+  MqttBridge.subscribe(parameterSettingTopic);
 }
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ //
 MqttBridge.addListener("onMessageArrived", (result: any) => {});
 
 MqttBridge.addListener("onConnectComplete", (result: any) => {});

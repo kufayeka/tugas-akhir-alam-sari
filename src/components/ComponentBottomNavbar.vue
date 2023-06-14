@@ -19,8 +19,8 @@ appNavigationEventBus.emit(TabView.Monitor);
 
 <template>
   <Tabbar
-    class="bottom-0 left-0 fixed shadow-bottomNav"
     v-if="bottomNavbarVisible"
+    class="bottom-0 left-0 fixed shadow-bottomNav"
   >
     <TabbarLink :active="activeTab === arrTabView[0]" @click="goToTab(0)">
       Monitor
