@@ -13,7 +13,10 @@ import {
   mqttDisconnect,
   realtimeDataMQTTTopic,
 } from "@/service/capacitorjs-mqtt-bridge";
-import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+import {
+  mqttConnectFailedEventListener,
+  mqttMessageArrivedEventListener,
+} from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 import dayjs from "dayjs";
 
 const router = useRouter();
@@ -48,7 +51,7 @@ mqttMessageArrivedEventListener.on((x: any) => {
       readings.sensor2.temperature.toFixed(2)
     );
     sensor2Humidity.value = parseFloat(readings.sensor2.humidity.toFixed(2));
-    timestamp.value = dayjs(readings.timestamp).format("MM-DD-YYYY (HH:mm:ss)");
+    timestamp.value = dayjs(readings.timestamp).format("DD-MM-YYYY (HH:mm:ss)");
   }
 });
 
@@ -72,8 +75,7 @@ onMounted(() => {
           </p>
         </div>
         <p class="text-justify text-md tracking-tighter opacity-80">
-          Halaman ini menampilkan data terkini dari setiap kumbung jamur. Klik
-          salah satu kumbung jamur di bawah untuk mulai memonitor.
+          Halaman ini menampilkan data terkini dari setiap kumbung jamur.
         </p>
         <div class="space-y-5 mt-7">
           <componentCardKumbung1DOM />

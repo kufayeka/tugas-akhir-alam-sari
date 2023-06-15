@@ -33,6 +33,7 @@ import useDelay from "@/composables/use-delay";
 import { mqttConnect } from "./service/capacitorjs-mqtt-bridge";
 import {
   mqttConnectCompleteListener,
+  mqttConnectFailedEventListener,
   mqttConnectinLostEventListener,
 } from "./composables/capacitorjs-mqtt-bridge-event-bus";
 
@@ -87,10 +88,14 @@ CapacitorApp.addListener("backButton", async (x) => {
 
 const isMqttConnected = ref(0);
 
+mqttConnectFailedEventListener.on(() => {
+  isMqttConnected.value = 2;
+});
+
 mqttConnectCompleteListener.on((x: any) => {
   isMqttConnected.value = 1;
   useDelay()
-    .delay(2)
+    .delay(1)
     .then(() => {
       isMqttConnected.value = 3;
     });

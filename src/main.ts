@@ -8,6 +8,9 @@ import Application from "@/App.vue";
 import { App } from "@capacitor/app";
 import { SplashScreen } from "@capacitor/splash-screen";
 
+import Vue3Lottie from "vue3-lottie";
+import "vue3-lottie/dist/style.css";
+
 // Create a new instance of the Vue app
 const app = createApp(Application);
 // Create a new instance of Pinia store
@@ -30,8 +33,7 @@ const initApp = async () => {
   app.use(pinia);
 
   // Load LottieAnimation component asynchronously
-  const LottieAnimation = () => import("lottie-web-vue");
-  LottieAnimation;
+  app.use(Vue3Lottie, { name: "Vue3Lottie" });
 
   // Mount the Vue app to the DOM element with ID "app"
   app.mount("#app");

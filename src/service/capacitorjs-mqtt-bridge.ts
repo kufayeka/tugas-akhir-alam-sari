@@ -1,7 +1,9 @@
-import { mqttMessageArrivedEventListener } from "@/composables/capacitorjs-mqtt-bridge-event-bus";
+import {
+  mqttConnectFailedEventListener,
+  mqttMessageArrivedEventListener,
+} from "@/composables/capacitorjs-mqtt-bridge-event-bus";
 import { MqttBridge } from "capacitor-mqtt-native-plugin";
 
-// Generate a random clientID
 function generateRandomClientId(length: number) {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -19,7 +21,7 @@ function generateRandomClientId(length: number) {
 const connectOptions = {
   serverURI: "tcp://203.189.122.131",
   port: 1883,
-  clientId: "",
+  clientId: generateRandomClientId(10),
   username: "petra_mqtt_broker",
   password: "petraMqttBroker777",
   setCleanSession: true,
@@ -36,6 +38,7 @@ export const mqttConnect = async () =>
     })
     .catch((errorMessage: string) => {
       console.log("Connect Failed:", errorMessage);
+      mqttConnectFailedEventListener.emit();
     });
 
 export const mqttDisconnect = async () =>
@@ -73,9 +76,3 @@ export function subscribeToTopics() {
   };
   MqttBridge.subscribe(parameterSettingTopic);
 }
-
-MqttBridge.addListener("onMessageArrived", (result: any) => {});
-
-MqttBridge.addListener("onConnectComplete", (result: any) => {});
-
-MqttBridge.addListener("onConnectionLost", (result: any) => {});

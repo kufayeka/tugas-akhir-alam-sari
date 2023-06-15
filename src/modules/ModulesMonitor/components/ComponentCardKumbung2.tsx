@@ -88,10 +88,19 @@ export const componentCardKumbung2DOM = defineComponent({
         <div
           class={"relative bg-white shadow-card1 rounded-md flex flex-col z-0"}
         >
-          <img
-            src={String(imageUrl.value)}
-            class={"rounded-t-md object-cover w-full h-44 z-0"}
-          />
+          <div class="relative">
+            <img
+              src={String(imageUrl.value)}
+              class={"rounded-t-md object-cover w-full h-44 z-0"}
+            />
+            {!imageUrl.value && (
+              <div class="text-sm absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center text-gray-500">
+                <p class={"text-xs"}>
+                  Foto kosong. Silahkan ambil foto kumbung jamur.
+                </p>
+              </div>
+            )}
+          </div>
           <div class="absolute top-2 left-0 right-0 px-2 flex justify-between items-center ">
             <div
               class={

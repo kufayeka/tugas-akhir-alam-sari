@@ -10,6 +10,8 @@ import { Card, Block, Button, Page } from "konsta/vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import ComponentGrafikKlimat from "../components/ComponentGrafikKlimat.vue";
+import GoogleChart from "../components/Grafik";
+import GoogleChartExample from "../components/GoogleChartExample.vue";
 
 const router = useRouter();
 
@@ -47,8 +49,8 @@ onMounted(async () => {
 
 <template>
   <Page class="pb-16" :style="pageStyle">
-    <p>Kumbung 2</p>
-    <ComponentGrafikKlimat />
-    <Button @click="goBackToMonitor()">Back</Button>
+    <!-- <GoogleChart /> -->
+    <GoogleChartExample />
+    <!-- <Button @click="goBackToMonitor()">Back</Button> -->
   </Page>
 </template>

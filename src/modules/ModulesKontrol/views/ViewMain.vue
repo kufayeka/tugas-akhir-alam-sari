@@ -14,13 +14,14 @@ import { parameterSettingMQTTTopic } from "@/service/capacitorjs-mqtt-bridge";
 
 import { MqttBridge } from "capacitor-mqtt-native-plugin";
 
+import LottieSuccessAnimation from "../assets/success_lottie.json";
+import { timeout } from "q";
+import useDelay from "@/composables/use-delay";
+
+const delayInstance = useDelay();
+
 const myDiv = ref();
-onMounted(() => {
-  // set the main card height to fill the screen when the content inside can't
-  if (myDiv.value.offsetHeight < window.innerHeight * 0.9) {
-    myDiv.value.style.height = "1000px";
-  }
-});
+onMounted(() => {});
 
 const setPointInput = ref();
 const intervalDataLoggerInput = ref();
@@ -29,6 +30,7 @@ const sprinklerIntervalToInput = ref();
 const PID_P_input = ref();
 const PID_I_input = ref();
 const PID_D_input = ref();
+const showSuccessPopUp = ref(false);
 
 mqttMessageArrivedEventListener.on((x: any) => {
   var topic = x.topic;
@@ -53,6 +55,14 @@ mqttMessageArrivedEventListener.on((x: any) => {
   }
 });
 
+function hideSuccessPopUp() {
+  delayInstance.delay(1.5).then(() => {
+    // Code to be executed after a 3-second delay
+    showSuccessPopUp.value = false;
+  });
+  showSuccessPopUp.value = false;
+}
+
 function simpanPengaturan() {
   var topic = parameterSettingMQTTTopic;
   var qos = 2;
@@ -75,20 +85,26 @@ function simpanPengaturan() {
   MqttBridge.publish({ topic, payload, qos, retained })
     .then((result: any) => {
       // The message is published successfully
+      showSuccessPopUp.value = true;
     })
     .catch((errorMessage: any) => {
       // The message fails to publish
+      showSuccessPopUp.value = false;
     });
 }
-
-const showWarning = true;
 </script>
 
 <template>
   <div class="h-fit flex flex-col justify-between" ref="el">
-    <div v-show="showWarning" class="black-overlay z-20"></div>
+    <div v-if="showSuccessPopUp" class="black-overlay z-20"></div>
 
-    <div v-show="showWarning" class="warning-box z-20">
+    <div v-if="showSuccessPopUp" class="warning-box z-20">
+      <Vue3Lottie
+        :animationData="LottieSuccessAnimation"
+        :loop="true"
+        @onLoopComplete="hideSuccessPopUp()"
+        class="w-5 h-w-5"
+      />
       <p
         class="flex justify-center font-semibold text-center text-sm tracking-tighter opacity-80"
       >
@@ -204,7 +220,7 @@ const showWarning = true;
             <p
               class="font-bold text-md text-md-light-primary ml-3 mt-3 tracking-tighter"
             >
-              Selang Waktu ON & OFF Maksimal Sprinkler
+              Selang Waktu ON & OFF Sprinkler
             </p>
 
             <table class="w-full mt-7">
@@ -213,7 +229,7 @@ const showWarning = true;
                   <td
                     class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-80"
                   >
-                    ON:
+                    Minimal:
                   </td>
                   <td class="flex justify-center">
                     <div class="rounded-input">
@@ -226,15 +242,13 @@ const showWarning = true;
                   </td>
                   <td
                     class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-80"
-                  >
-                    Detik
-                  </td>
+                  ></td>
                 </tr>
                 <tr>
                   <td
                     class="text-right font-semibold text-md text-black pr-4 tracking-tighter opacity-80"
                   >
-                    OFF:
+                    Maksimal:
                   </td>
                   <td class="flex justify-center">
                     <div class="rounded-input">
