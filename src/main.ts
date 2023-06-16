@@ -10,6 +10,8 @@ import { SplashScreen } from "@capacitor/splash-screen";
 
 import Vue3Lottie from "vue3-lottie";
 import "vue3-lottie/dist/style.css";
+import VueApexCharts from "vue3-apexcharts";
+import * as echarts from "echarts";
 
 // Create a new instance of the Vue app
 const app = createApp(Application);
@@ -34,6 +36,8 @@ const initApp = async () => {
 
   // Load LottieAnimation component asynchronously
   app.use(Vue3Lottie, { name: "Vue3Lottie" });
+
+  app.use(VueApexCharts);
 
   // Mount the Vue app to the DOM element with ID "app"
   app.mount("#app");

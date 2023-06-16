@@ -1,108 +1,100 @@
-<script setup lang="ts">
-import { use } from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
-import { LineChart } from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-} from "echarts/components";
-import VChart, { THEME_KEY } from "vue-echarts";
-import { ref, provide } from "vue";
+<template>
+  <div class="h-full w-full">
+    <div
+      id="main"
+      class="w-full h-full"
+      style="width: 700px; height: 450px"
+    ></div>
+  </div>
+</template>
 
-use([
-  CanvasRenderer,
-  LineChart,
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-]);
+<script setup>
+import { onMounted } from "vue";
+import Plotly from "plotly.js-dist-min";
 
-provide(THEME_KEY, "light");
+onMounted(async () => {
+  // Create the chart container
+  const container = document.getElementById("main");
 
-const series1 = ref([]);
-const series2 = ref([]);
+  const startDate = new Date("2023-06-16T00:00:00.000Z");
+  const endDate = new Date("2023-06-17T00:00:00.000Z");
+  const interval = 30; // Interval in minutes
 
-const option = ref({
-  title: {
-    text: "Stacked Area Chart",
-  },
-  tooltip: {
-    trigger: "axis",
-    axisPointer: {
-      type: "cross",
-      label: {
-        backgroundColor: "#6a7985",
+  const response = await fetch(
+    "http://203.189.122.131:7777/climate_data_records/mushroom_house/2/7"
+  );
+  const dataFromServer = await response.json();
+  const data = generateData(dataFromServer);
+
+  const layout = {
+    title: {
+      text: "Rekaman Data Klimat",
+      x: 0.5, // Set the x position to center the title
+      xanchor: "center", // Center align the title
+    },
+    xaxis: {
+      type: "date",
+    },
+    yaxis: {
+      range: [0, 100],
+    },
+    legend: {
+      orientation: "h",
+      yanchor: "bottom",
+      y: 1.02,
+      xanchor: "right",
+      x: 1,
+    },
+    margin: {
+      autoexpand: true,
+    },
+    autosize: true,
+  };
+
+  // Plot the chart
+  Plotly.newPlot(
+    container,
+    [
+      {
+        x: data.map(({ timestamp }) => new Date(timestamp)),
+        y: data.map(({ temp2 }) => temp2),
+        name: "Temperatur (C)",
+        type: "scatter",
+        mode: "lines",
+        line: {
+          shape: "linear",
+        },
+        fill: "tozeroy",
+        hovertemplate: "Waktu: %{x}<br>Temperatur: %{y}<extra></extra>",
       },
-    },
-  },
-  legend: {
-    data: ["Kelembaban", "Temperatur"],
-  },
-  toolbox: {
-    feature: {
-      saveAsImage: {},
-    },
-  },
-  grid: {
-    left: "3%",
-    right: "4%",
-    bottom: "3%",
-    containLabel: true,
-  },
-  xAxis: [
+      {
+        x: data.map(({ timestamp }) => new Date(timestamp)),
+        y: data.map(({ hum2 }) => hum2),
+        name: "Kelembaban (% RH)",
+        type: "scatter",
+        mode: "lines",
+        line: {
+          shape: "linear",
+        },
+        fill: "tozeroy",
+        hovertemplate: "Waktu: %{x}<br>Kelembaban: %{y}<extra></extra>",
+      },
+    ],
+    layout,
     {
-      type: "category",
-      boundaryGap: false,
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-  ],
-  yAxis: [
-    {
-      type: "value",
-    },
-  ],
-  series: [
-    {
-      name: "Kelembaban",
-      type: "line",
-      smooth: true,
-      label: {
-        show: true,
-        position: "top",
-      },
-      areaStyle: {},
-      emphasis: {
-        focus: "series",
-      },
-      data: [320, 332, 301, 334, 390, 330, 320],
-    },
-    {
-      name: "Temperatur",
-      type: "line",
-      smooth: true,
-      label: {
-        show: true,
-        position: "top",
-      },
-      areaStyle: {},
-      emphasis: {
-        focus: "series",
-      },
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-    },
-  ],
+      displaylogo: false,
+    }
+  );
+
+  // Function to generate data based on the server response
+  function generateData(serverData) {
+    return serverData.map(({ timestamp, temp2, hum2 }) => ({
+      timestamp: new Date(timestamp),
+      temp2,
+      hum2,
+    }));
+  }
 });
 </script>
 
-<template>
-  <v-chart class="h-full w-full p-3" :option="option" autoresize />
-</template>
-
-<style scoped>
-.chart {
-  height: 100vh;
-}
-</style>
+<style></style>

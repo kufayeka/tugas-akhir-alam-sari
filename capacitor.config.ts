@@ -12,6 +12,10 @@ const config: CapacitorConfig = {
       showSpinner: true,
     },
   },
+  server: {
+    url: "http://192.168.43.198:5173",
+    cleartext: true,
+  },
 };
 
 //server: {
