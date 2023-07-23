@@ -13,12 +13,11 @@ import { onMounted } from "vue";
 import Plotly from "plotly.js-dist-min";
 
 onMounted(async () => {
-  // Create the chart container
   const container = document.getElementById("main");
 
   const startDate = new Date("2023-06-16T00:00:00.000Z");
   const endDate = new Date("2023-06-17T00:00:00.000Z");
-  const interval = 30; // Interval in minutes
+  const interval = 30;
 
   const response = await fetch(
     "http://203.189.122.131:7777/climate_data_records/mushroom_house/2/7"

@@ -1,8 +1,0 @@
-pub to a => msg: ({grafik_kumbung:1, limit: 30})
-
-sub to a {
-    if a.msg.grafik_kumbung == 1 {
-        var dataDB: get data kumbung 1 with limit (a.msg.limit)
-        publish to b => msg: (dataDB)
-    }
-}

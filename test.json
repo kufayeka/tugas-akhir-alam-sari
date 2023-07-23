@@ -1,0 +1,8 @@
+[
+  {
+    "viewType": "CardView",
+    "viewStyle": "bg-white shadow-md rounded-m p-3",
+    "title": "THIS IS THE CARD TITLE",
+    "body": "This is the card content."
+  }
+]
